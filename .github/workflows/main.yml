@@ -43,12 +43,16 @@ jobs:
       - name: Emulator
         run: |
           cd $GITHUB_WORKSPACE
+
+          ANDROID_AVD_HOME="$HOME/.android/avd"
+          
           avd="${GITHUB_WORKSPACE}/cmdline-tools/latest/bin/avdmanager"
           emulator="${GITHUB_WORKSPACE}/emulator/emulator"
           PATH="$PATH:${GITHUB_WORKSPACE}/platform-tools"
 
           echo no | "$avd" create avd -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
-
+          sed -i 's:^target\s*=.*:target=android-CANARY:g' "$ANDROID_AVD_HOME/test.ini"
+          
           coresC="$( nproc )"
           if [[ "$coresC" -gt 8 ]]; then coresC=8; fi
           $emulator @test -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -read-only -no-snapshot -cores "$coresC" -memory 8192
