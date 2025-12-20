@@ -77,4 +77,14 @@ jobs:
       - name: adb or not to b
         run: |
           PATH="$PATH:${ANDROID_PF_TOOLS}"
-          adb wait-for-device shell "getprop"
+          cd "$GITHUB_WORKSPACE"
+          
+          adb wait-for-device shell "getprop" > canary.props
+          cat canary.props
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          compression-level: 9
+          name: canary
+          path: canary.props
