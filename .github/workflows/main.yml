@@ -17,30 +17,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "21"
-          
-      - name: Set up sccache
-        shell: bash
-        env:
-          SCCACHE_DIRECT: false
-          SCCACHE_DIR: ${{ github.workspace }}/.sccache
-          SCCACHE_CACHE_SIZE: '300M'
-          SCCACHE_IDLE_TIMEOUT: 0
-        run: |
-          ver=$(curl -sL 'https://api.github.com/repos/mozilla/sccache/releases/latest' | jq -r .name)
-          url="https://github.com/mozilla/sccache/releases/download/${ver}/sccache-${ver}-x86_64-unknown-linux-musl.tar.gz"
-          dest="/usr/local/bin/sccache"
-          curl -L "$url" | tar xz -O --wildcards "*/sccache" > $dest
-          chmod +x $dest
-
-          sccache --start-server
-          sccache -z
-      
-      - name: Show sccache stats
-        uses: gacts/run-and-post-run@v1
-        with:
-          run: sccache -s
-          post: sccache -s
-      
+         
       - name: Enable KVM group perms
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
