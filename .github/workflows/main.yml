@@ -37,7 +37,7 @@ jobs:
           
           #sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
           #curl -s -o sdkmanager.zip "$sdkDL"
-          #sdk="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
+          sdk="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
           #unzip sdkmanager.zip
           #rm -f sdkmanager.zip
           #cd cmdline-tools
