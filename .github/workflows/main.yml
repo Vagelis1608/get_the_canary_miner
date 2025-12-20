@@ -30,6 +30,7 @@ jobs:
           echo "ANDROID_AVD_HOME=$HOME/.android/avd" >> $GITHUB_ENV
           
       - name: SDK Manager Setup
+        run: |
           mkdir "$ANDROID_USER_HOME"
           cd "$ANDROID_USER_HOME"
           
