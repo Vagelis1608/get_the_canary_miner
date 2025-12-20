@@ -65,7 +65,7 @@ jobs:
           
           coresC="$( nproc )"
           if [[ "$coresC" -gt 8 ]]; then coresC=8; fi
-          $emulator @test -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -read-only -no-snapshot -cores "$coresC" -memory 8192 -port 5565
+          $emulator @test -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -read-only -no-snapshot -cores "$coresC" -memory 8192 -port 5566
 
           echo 'ANDROID_SERIAL=emulator-5565' >> $GITHUB_ENV
 
