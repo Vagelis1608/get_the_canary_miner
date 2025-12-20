@@ -48,7 +48,7 @@ jobs:
           ANDROID_USER_HOME: "$HOME/.android"
           ANDROID_AVD_HOME: "$HOME/.android/avd"
         run: |
-          cd $GITHUB_WORKSPACE
+          cd "$ANDROID_USER_HOME"
           
           avd="${ANDROID_USER_HOME}/cmdline-tools/latest/bin/avdmanager"
           emulator="${ANDROID_USER_HOME}/emulator/emulator"
