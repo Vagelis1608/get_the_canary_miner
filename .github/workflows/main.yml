@@ -25,10 +25,11 @@ jobs:
           sudo udevadm trigger --name-match=kvm
 
       - name: SDK Manager Setup
-        env:
-          ANDROID_USER_HOME: "$HOME/.android"
-          ANDROID_AVD_HOME: "$HOME/.android/avd"
         run: |
+          echo "ANDROID_USER_HOME=$HOME/.android" >> $GITHUB_ENV
+          echo "ANDROID_AVD_HOME=$HOME/.android/avd" >> $GITHUB_ENV
+
+          mkdir "$ANDROID_USER_HOME"
           cd "$ANDROID_USER_HOME"
           
           sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
@@ -44,9 +45,6 @@ jobs:
           "$sdk" --channel=3 platform-tools emulator 'system-images;android-CANARY;google_apis_ps16k;x86_64'
 
       - name: Emulator
-        env:
-          ANDROID_USER_HOME: "$HOME/.android"
-          ANDROID_AVD_HOME: "$HOME/.android/avd"
         run: |
           cd "$ANDROID_USER_HOME"
           
