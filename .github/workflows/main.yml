@@ -1,36 +1,79 @@
-# This is a basic workflow to help you get started with Actions
+name: Main Workflow
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  canary:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      fail-fast: false
+      
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          
+      - name: Set up sccache
+        shell: bash
+        env:
+          SCCACHE_DIRECT: false
+          SCCACHE_DIR: ${{ github.workspace }}/.sccache
+          SCCACHE_CACHE_SIZE: '300M'
+          SCCACHE_IDLE_TIMEOUT: 0
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          ver=$(curl -sL 'https://api.github.com/repos/mozilla/sccache/releases/latest' | jq -r .name)
+          url="https://github.com/mozilla/sccache/releases/download/${ver}/sccache-${ver}-x86_64-unknown-linux-musl.tar.gz"
+          dest="/usr/local/bin/sccache"
+          curl -L "$url" | tar xz -O --wildcards "*/sccache" > $dest
+          chmod +x $dest
+
+          sccache --start-server
+          sccache -z
+      
+      - name: Show sccache stats
+        uses: gacts/run-and-post-run@v1
+        with:
+          run: sccache -s
+          post: sccache -s
+      
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: SDK Manager Setup
+        run: |
+          cd $GITHUB_WORKSPACE
+
+          sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
+          curl -s -o sdkmanager.zip "$sdkDL"
+          sdk="${GITHUB_WORKSPACE}/cmdline-tools/latest/bin/sdkmanager"
+          unzip sdkmanager.zip
+          rm -f sdkmanager.zip
+          cd cmdline-tools
+          mkdir latest
+          mv -t latest bin lib NOTICE.txt source.properties
+
+          yes | "$sdk" --licenses &> /dev/null
+          "$sdk" --channel=3 platform-tools emulator 'system-images;android-CANARY;google_apis_ps16k;x86_64'
+
+      - name: Emulator
+        run: |
+          cd $GITHUB_WORKSPACE
+          avd="${GITHUB_WORKSPACE}/cmdline-tools/latest/bin/avdmanager"
+          emulator="${GITHUB_WORKSPACE}/emulator/emulator"
+          PATH="$PATH:${GITHUB_WORKSPACE}/platform-tools"
+
+          echo no | "$avd" create avd -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
+
+          coresC="$( nproc )"
+          if [[ "$coresC" -gt 8 ]]; then coresC=8; fi
+          $emulator @test -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -read-only -no-snapshot -cores "$coresC" -memory 8192
+
+          adb wait-for-device shell "ls /"
