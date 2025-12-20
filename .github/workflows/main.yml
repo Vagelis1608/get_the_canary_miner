@@ -41,8 +41,8 @@ jobs:
           unzip sdkmanager.zip
           rm -f sdkmanager.zip
           cd cmdline-tools
-          mkdir latest
-          mv -t latest bin lib NOTICE.txt source.properties
+          mkdir latest || true
+          mv -f -t latest bin lib NOTICE.txt source.properties
 
           yes | "$sdk" --licenses &> /dev/null
           "$sdk" --channel=3 platform-tools emulator 'system-images;android-CANARY;google_apis_ps16k;x86_64'
