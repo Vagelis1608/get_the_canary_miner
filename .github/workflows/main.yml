@@ -31,6 +31,7 @@ jobs:
           echo "ANDROID_AVD_HOME=$HOME/.android/avd" >> $GITHUB_ENV
           echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
           echo 'ANDROID_SERIAL=emulator-5566' >> $GITHUB_ENV
+          echo 'ANDROID_PF_TOOLS=/usr/local/lib/android/sdk/platform-tools" >> $GITHUB_ENV
           
       - name: SDK Manager Setup
         run: |
@@ -59,7 +60,7 @@ jobs:
           
           avd="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/avdmanager"
           emulator="${ANDROID_SDK_ROOT}/emulator/emulator"
-          PATH="$PATH:${ANDROID_SDK_ROOT}/platform-tools"
+          PATH="$PATH:${ANDROID_PF_TOOLS}"
 
           adb devices
           adb kill-server
@@ -75,4 +76,5 @@ jobs:
 
       - name: adb or not to b
         run: |
+          PATH="$PATH:${ANDROID_PF_TOOLS}"
           adb wait-for-device shell "getprop"
