@@ -29,6 +29,8 @@ jobs:
           ANDROID_USER_HOME: "$HOME/.android"
           ANDROID_AVD_HOME: "$HOME/.android/avd"
         run: |
+          cd "$ANDROID_USER_HOME"
+          
           sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
           curl -s -o sdkmanager.zip "$sdkDL"
           sdk="${ANDROID_USER_HOME}/cmdline-tools/latest/bin/sdkmanager"
