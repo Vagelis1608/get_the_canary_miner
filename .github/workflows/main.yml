@@ -28,16 +28,16 @@ jobs:
         run: |
           echo "ANDROID_USER_HOME=$HOME/.android" >> $GITHUB_ENV
           echo "ANDROID_AVD_HOME=$HOME/.android/avd" >> $GITHUB_ENV
-          echo "ANDROID_SDK_ROOT=$HOME/.android" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
           
       - name: SDK Manager Setup
         run: |
-          mkdir "$ANDROID_USER_HOME"
-          cd "$ANDROID_USER_HOME"
+          mkdir -p "$ANDROID_SDK_ROOT" || true
+          cd "$ANDROID_SDK_ROOT"
           
           sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
           curl -s -o sdkmanager.zip "$sdkDL"
-          sdk="${ANDROID_USER_HOME}/cmdline-tools/latest/bin/sdkmanager"
+          sdk="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
           unzip sdkmanager.zip
           rm -f sdkmanager.zip
           cd cmdline-tools
@@ -51,9 +51,9 @@ jobs:
         run: |
           cd "$ANDROID_USER_HOME"
           
-          avd="${ANDROID_USER_HOME}/cmdline-tools/latest/bin/avdmanager"
-          emulator="${ANDROID_USER_HOME}/emulator/emulator"
-          PATH="$PATH:${ANDROID_USER_HOME}/platform-tools"
+          avd="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/avdmanager"
+          emulator="${ANDROID_SDK_ROOT}/emulator/emulator"
+          PATH="$PATH:${ANDROID_SDK_ROOT}/platform-tools"
 
           echo no | "$avd" create avd -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
           sed -i 's:^target\s*=.*:target=android-CANARY:g' "$ANDROID_AVD_HOME/test.ini"
