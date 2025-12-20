@@ -25,12 +25,13 @@ jobs:
           sudo udevadm trigger --name-match=kvm
 
       - name: SDK Manager Setup
+        env:
+          ANDROID_USER_HOME: "$HOME/.android"
+          ANDROID_AVD_HOME: "$HOME/.android/avd"
         run: |
-          cd $GITHUB_WORKSPACE
-
           sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
           curl -s -o sdkmanager.zip "$sdkDL"
-          sdk="${GITHUB_WORKSPACE}/cmdline-tools/latest/bin/sdkmanager"
+          sdk="${ANDROID_USER_HOME}/cmdline-tools/latest/bin/sdkmanager"
           unzip sdkmanager.zip
           rm -f sdkmanager.zip
           cd cmdline-tools
@@ -41,14 +42,15 @@ jobs:
           "$sdk" --channel=3 platform-tools emulator 'system-images;android-CANARY;google_apis_ps16k;x86_64'
 
       - name: Emulator
+        env:
+          ANDROID_USER_HOME: "$HOME/.android"
+          ANDROID_AVD_HOME: "$HOME/.android/avd"
         run: |
           cd $GITHUB_WORKSPACE
-
-          ANDROID_AVD_HOME="$HOME/.android/avd"
           
-          avd="${GITHUB_WORKSPACE}/cmdline-tools/latest/bin/avdmanager"
-          emulator="${GITHUB_WORKSPACE}/emulator/emulator"
-          PATH="$PATH:${GITHUB_WORKSPACE}/platform-tools"
+          avd="${ANDROID_USER_HOME}/cmdline-tools/latest/bin/avdmanager"
+          emulator="${ANDROID_USER_HOME}/emulator/emulator"
+          PATH="$PATH:${ANDROID_USER_HOME}/platform-tools"
 
           echo no | "$avd" create avd -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
           sed -i 's:^target\s*=.*:target=android-CANARY:g' "$ANDROID_AVD_HOME/test.ini"
