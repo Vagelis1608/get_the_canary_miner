@@ -39,6 +39,7 @@ jobs:
           cd "$ANDROID_SDK_ROOT"
 
           if [[ ! -e "cmdline-tools" || ! -e "cmdline-tools/latest" ]]; then
+            rm -rf cmdline-tools
             sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
             curl -s -o sdkmanager.zip "$sdkDL"
           
@@ -82,6 +83,39 @@ jobs:
           adb wait-for-device shell "getprop" > canary.props
           cat canary.props
 
+      - name: Check for update
+        run: |
+          function getPif() {
+            grep -i "$1" canary.props | cut -d'[' -f3 | tr -d ']'
+          }
+
+          if [[ "$( getPif 'ro.build.fingerprint' )" == "$( grep -i 'FINGERPRINT' canary.pif.prop | cut -d= -f2 )" ]]; then
+            echo 'CANARY_UPDATE=0' >> $GITHUB_ENV
+          else
+            echo 'CANARY_UPDATE=1' >> $GITHUB_ENV
+          fi
+
+      - name: Grab migrate.sh from PIFork ( by osm0sis )
+        run: |
+          curl -s -o migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
+          sudo chmod +x migrate.sh
+
+      - name: Processing
+        run: |
+          function getPif() {
+            grep -i "$1" canary.props | cut -d'[' -f3 | tr -d ']'
+          }
+
+          cat <<EOF | tee min.prop;
+          MANUFACTURER=Google
+          MODEL=$( getPif 'ro.product.model' )
+          FINGERPRINT=$( getPif 'ro.build.fingerprint' )
+          PRODUCT=$( getPif 'ro.build.product' )
+          DEVICE=$( getPif 'ro.product.device' )
+          SECURITY_PATCH=$( getPif 'ro.build.version.security_patch' )
+          DEVICE_INITIAL_SDK_INT=32
+          EOF
+          
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v6.0.0
         with:
