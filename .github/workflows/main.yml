@@ -80,13 +80,13 @@ jobs:
           PATH="$PATH:${ANDROID_PF_TOOLS}"
           cd "$GITHUB_WORKSPACE"
           
-          adb wait-for-device shell "getprop" > canary.props
-          cat canary.props
+          adb wait-for-device shell "getprop" > canary.new.props
+          cat canary.new.props
 
       - name: Check for update
         run: |
           function getPif() {
-            grep -i "$1" canary.props | cut -d'[' -f3 | tr -d ']'
+            grep -i "$1" canary.new.props | cut -d'[' -f3 | tr -d ']'
           }
 
           if [[ "$( getPif 'ro.build.fingerprint' )" == "$( grep -i 'FINGERPRINT' canary.pif.prop | cut -d= -f2 )" ]]; then
@@ -95,15 +95,17 @@ jobs:
             echo 'CANARY_UPDATE=1' >> $GITHUB_ENV
           fi
 
-      - name: Grab migrate.sh from PIFork ( by osm0sis )
+      - name: Fetch migrate.sh from PIFork ( by osm0sis )
+        if: env.CANARY_UPDATE == 1 
         run: |
           curl -s -o migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
           sudo chmod +x migrate.sh
 
       - name: Processing
+        if: env.CANARY_UPDATE == 1 
         run: |
           function getPif() {
-            grep -i "$1" canary.props | cut -d'[' -f3 | tr -d ']'
+            grep -i "$1" canary.new.props | cut -d'[' -f3 | tr -d ']'
           }
 
           cat <<EOF | tee min.prop;
@@ -115,10 +117,19 @@ jobs:
           SECURITY_PATCH=$( getPif 'ro.build.version.security_patch' )
           DEVICE_INITIAL_SDK_INT=32
           EOF
+
+          sh migrate.sh -f -a min.prop
+          mv -f custom.pif.prop canary.pif.prop
+          echo "" >> canary.pif.prop
+          echo "# Beta Released: $( date '+%Y-%m-%d' )" >> canary.pif.prop
+          echo "# Estimated Expiry: $( date -d @$(( $( date +%s ) + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> canary.pif.prop
           
       - name: Upload a Build Artifact
+        if: env.CANARY_UPDATE == 1 
         uses: actions/upload-artifact@v6.0.0
         with:
           compression-level: 9
           name: canary
-          path: canary.props
+          path: |
+            canary.new.props
+            canary.pif.prop
