@@ -28,6 +28,7 @@ jobs:
         run: |
           echo "ANDROID_USER_HOME=$HOME/.android" >> $GITHUB_ENV
           echo "ANDROID_AVD_HOME=$HOME/.android/avd" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_USER_HOME" >> $GITHUB_ENV
           
       - name: SDK Manager Setup
         run: |
