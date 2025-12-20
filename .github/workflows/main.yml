@@ -34,16 +34,20 @@ jobs:
         run: |
           mkdir -p "$ANDROID_SDK_ROOT" || true
           cd "$ANDROID_SDK_ROOT"
-          
-          #sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
-          #curl -s -o sdkmanager.zip "$sdkDL"
-          sdk="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
-          #unzip sdkmanager.zip
-          #rm -f sdkmanager.zip
-          #cd cmdline-tools
-          #mkdir latest || true
-          #mv -f -t latest bin lib NOTICE.txt source.properties
 
+          if [[ ! -e "cmdline-tools" || ! -e "cmdline-tools/latest" ]]; then
+            sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
+            curl -s -o sdkmanager.zip "$sdkDL"
+          
+            unzip sdkmanager.zip
+            rm -f sdkmanager.zip
+            cd cmdline-tools
+            mkdir latest
+            mv -f -t latest bin lib NOTICE.txt source.properties
+          fi
+          
+          sdk="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
+          
           yes | "$sdk" --licenses &> /dev/null
           "$sdk" --channel=3 platform-tools emulator 'system-images;android-CANARY;google_apis_ps16k;x86_64'
 
