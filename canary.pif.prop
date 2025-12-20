@@ -1,0 +1,31 @@
+# Build Fields
+MANUFACTURER=Google
+MODEL=sdk_gphone16k_x86_64
+FINGERPRINT=google/sdk_gphone16k_x86_64/emu64xa16k:CANARY/ZP11.251121.011/14525967:userdebug/dev-keys
+BRAND=google
+PRODUCT=emu64xa16k
+DEVICE=emu64xa16k
+RELEASE=CANARY
+ID=ZP11.251121.011
+INCREMENTAL=14525967
+TYPE=userdebug
+TAGS=dev-keys
+SECURITY_PATCH=2025-12-05
+DEVICE_INITIAL_SDK_INT=32
+
+# System Properties
+*.build.id=ZP11.251121.011
+*.security_patch=2025-12-05
+*api_level=32
+
+# Advanced Settings
+spoofBuild=1
+spoofProps=1
+spoofProvider=1
+spoofSignature=0
+spoofVendingFinger=0
+spoofVendingSdk=0
+verboseLogs=0
+
+# Beta Released: 2025-12-20
+# Estimated Expiry: 2026-01-31
