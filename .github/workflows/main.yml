@@ -108,6 +108,8 @@ jobs:
             grep -i "$1" canary.new.props | cut -d'[' -f3 | tr -d ']'
           }
 
+          cp -f canary.new.props canary.props
+
           cat <<EOF | tee min.prop;
           MANUFACTURER=Google
           MODEL=$( getPif 'ro.product.model' )
@@ -123,6 +125,16 @@ jobs:
           echo "" >> canary.pif.prop
           echo "# Beta Released: $( date '+%Y-%m-%d' )" >> canary.pif.prop
           echo "# Estimated Expiry: $( date -d @$(( $( date +%s ) + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> canary.pif.prop
+
+      - name: Commit new props
+        if: env.CANARY_UPDATE == 1
+        run: |          
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          git add canary.pif.prop canary.props
+          git commit -m "New Canary build"
+          git push
           
       - name: Upload a Build Artifact
         if: env.CANARY_UPDATE == 1 
