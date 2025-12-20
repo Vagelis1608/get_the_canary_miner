@@ -24,11 +24,12 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: SDK Manager Setup
+      - name: env setup
         run: |
           echo "ANDROID_USER_HOME=$HOME/.android" >> $GITHUB_ENV
           echo "ANDROID_AVD_HOME=$HOME/.android/avd" >> $GITHUB_ENV
-
+          
+      - name: SDK Manager Setup
           mkdir "$ANDROID_USER_HOME"
           cd "$ANDROID_USER_HOME"
           
