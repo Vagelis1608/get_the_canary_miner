@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '23 11,23 * * *'
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Test Mode, skip git commit"
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   canary:
@@ -129,7 +135,7 @@ jobs:
           echo "# Estimated Expiry: $( date -d @$(( $( date +%s ) + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> canary.pif.prop
 
       - name: Commit new props
-        if: env.CANARY_UPDATE == 1
+        if: env.CANARY_UPDATE == 1 && !inputs.test_mode
         run: |          
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
