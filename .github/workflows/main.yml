@@ -75,8 +75,17 @@ jobs:
           adb kill-server
           adb start-server
 
-          echo no | "$avd" create avd --device "45" -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
+          echo no | "$avd" create avd --device "pixel_8_pro" -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
           sed -i 's:^target\s*=.*:target=android-CANARY:g' "$ANDROID_AVD_HOME/test.ini"
+
+          mkdir temp
+          cd temp
+          curl -s -o husky.zip https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.251121.010-factory-e9f679b2.zip
+          unzip -j husky.zip
+          unzip -j image*.zip system*img
+          mv -f system*img "$ANDROID_AVD_HOME/test.avd/"
+          cd ..
+          rm -rf temp
           
           coresC="$( nproc )"
           if [[ "$coresC" -gt 8 ]]; then coresC=8; fi
@@ -89,7 +98,10 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           
           adb wait-for-device shell "getprop" > canary.new.props
+          cat canary.new.props | grep 'ro.build.fingerprint'
+          echo '---------'
           cat canary.new.props
+
 
       - name: Check for update
         run: |
