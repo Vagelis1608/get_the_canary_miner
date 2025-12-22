@@ -46,17 +46,15 @@ jobs:
           mkdir -p "$ANDROID_SDK_ROOT" || true
           cd "$ANDROID_SDK_ROOT"
 
-          if [[ ! -e "cmdline-tools" || ! -e "cmdline-tools/latest" ]]; then
-            rm -rf cmdline-tools
-            sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
-            curl -s -o sdkmanager.zip "$sdkDL"
+          rm -rf cmdline-tools
+          sdkDL="$( curl -s https://developer.android.com/studio/index.html | grep 'commandlinetools-linux' | grep '_latest' | grep 'href' | cut -d'"' -f2 )"
+          curl -s -o sdkmanager.zip "$sdkDL"
           
-            unzip sdkmanager.zip
-            rm -f sdkmanager.zip
-            cd cmdline-tools
-            mkdir latest
-            mv -f -t latest bin lib NOTICE.txt source.properties
-          fi
+          unzip sdkmanager.zip
+          rm -f sdkmanager.zip
+          cd cmdline-tools
+          mkdir latest
+          mv -f -t latest bin lib NOTICE.txt source.properties
           
           sdk="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
           
