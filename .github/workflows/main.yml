@@ -71,7 +71,7 @@ jobs:
           emulator="${ANDROID_SDK_ROOT}/emulator/emulator"
           PATH="$PATH:${ANDROID_PF_TOOLS}"
 
-          avdmanager list device
+          "$avd" list device
 
           adb devices
           adb kill-server
