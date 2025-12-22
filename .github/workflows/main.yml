@@ -1,8 +1,8 @@
 name: Main Workflow
 
 on:
-  schedule:
-    - cron: '23 11,23 * * *'
+  #schedule:
+  #  - cron: '23 11,23 * * *'
   workflow_dispatch:
     inputs:
       test_mode:
@@ -75,7 +75,7 @@ jobs:
           adb kill-server
           adb start-server
 
-          echo no | "$avd" create avd -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
+          echo no | "$avd" create avd --device "pixel_9" -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
           sed -i 's:^target\s*=.*:target=android-CANARY:g' "$ANDROID_AVD_HOME/test.ini"
           
           coresC="$( nproc )"
