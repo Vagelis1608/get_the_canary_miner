@@ -71,11 +71,13 @@ jobs:
           emulator="${ANDROID_SDK_ROOT}/emulator/emulator"
           PATH="$PATH:${ANDROID_PF_TOOLS}"
 
+          avdmanager list device
+
           adb devices
           adb kill-server
           adb start-server
 
-          echo no | "$avd" create avd --device "pixel_9" -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
+          echo no | "$avd" create avd --device "45" -f -n test -k 'system-images;android-CANARY;google_apis_ps16k;x86_64'
           sed -i 's:^target\s*=.*:target=android-CANARY:g' "$ANDROID_AVD_HOME/test.ini"
           
           coresC="$( nproc )"
