@@ -95,6 +95,8 @@ jobs:
             grep -i "$1" canary.new.props | cut -d'[' -f3 | tr -d ']'
           }
 
+          cd "$GITHUB_WORKSPACE/emulator"
+
           if [[ "$( getPif 'ro.build.fingerprint' )" == "$( grep -i 'FINGERPRINT' canary.pif.prop | cut -d= -f2 )" ]]; then
             echo 'CANARY_UPDATE=0' >> $GITHUB_ENV
           else
@@ -104,8 +106,8 @@ jobs:
       - name: Fetch migrate.sh from PIFork ( by osm0sis )
         if: env.CANARY_UPDATE == 1 
         run: |
-          curl -s -o migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
-          sudo chmod +x migrate.sh
+          curl -s -o emulator/migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
+          sudo chmod +x emulator/migrate.sh
 
       - name: Processing
         if: env.CANARY_UPDATE == 1 
@@ -113,6 +115,8 @@ jobs:
           function getPif() {
             grep -i "$1" canary.new.props | cut -d'[' -f3 | tr -d ']'
           }
+
+          cd "$GITHUB_WORKSPACE/emulator"
 
           cp -f canary.new.props canary.props
 
@@ -138,7 +142,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git add canary.pif.prop canary.props
+          git add emulator/canary.pif.prop emulator/canary.props
           git commit -m "New Emulator Canary build"
           git push
           
@@ -147,7 +151,5 @@ jobs:
         uses: actions/upload-artifact@v6.0.0
         with:
           compression-level: 9
-          name: canary
-          path: |
-            canary.new.props
-            canary.pif.prop
+          name: emulator
+          path: emulator/*
