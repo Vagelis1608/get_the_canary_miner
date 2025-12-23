@@ -139,7 +139,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
 
           git add canary.pif.prop canary.props
-          git commit -m "New Canary build"
+          git commit -m "New Emulator Canary build"
           git push
           
       - name: Upload a Build Artifact
