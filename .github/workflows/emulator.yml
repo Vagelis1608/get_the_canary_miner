@@ -84,7 +84,7 @@ jobs:
       - name: adb or not to b
         run: |
           PATH="$PATH:${ANDROID_PF_TOOLS}"
-          cd "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE/emulator"
           
           adb wait-for-device shell "getprop" > canary.new.props
           cat canary.new.props
