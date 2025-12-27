@@ -1,0 +1,124 @@
+name: Canaries
+
+on:
+  schedule:
+    - cron: '53 * * * *'
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Test Mode, skip git commit"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  canaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Latest jq
+        run: |
+          wget -q --no-check-certificate -O /usr/local/bin/jq https://github.com/jqlang/jq/releases/latest/download/jq-linux64
+          sudo chmod 755 /usr/local/bin/jq
+          jq --version
+
+      - name: Get device list and migrate.sh, aka pifork@osm0sis piggyback XD
+        run: |
+          mkdir "$GITHUB_WORKSPACE/devices" || true
+          cd "$GITHUB_WORKSPACE/devices"
+
+          wget -q -O PIXEL_VERSIONS_HTML --no-check-certificate "https://developer.android.com/about/versions" 2>&1 || exit 1;
+          wget -q -O PIXEL_LATEST_HTML --no-check-certificate "$(grep -o 'https://developer.android.com/about/versions/.*[0-9]"' PIXEL_VERSIONS_HTML | sort -ru | cut -d\" -f1 | head -n1 | tail -n1)" 2>&1 || exit 1;
+          wget -q -O PIXEL_FI_HTML --no-check-certificate "https://developer.android.com$(grep -o 'href=".*download.*"' PIXEL_LATEST_HTML | grep 'qpr' | cut -d\" -f2 | head -n1 | tail -n1)" 2>&1 || exit 1;
+          grep -A1 'tr id=' PIXEL_FI_HTML | grep 'td' | sed 's;.*<td>\(.*\)</td>;\1;' > model.list
+          PRODUCT_LIST="$(grep 'tr id=' PIXEL_FI_HTML | sed 's;.*<tr id="\(.*\)">;\1_beta;' | tr '\n' ' ')";
+
+          echo "PRODUCTS=$PRODUCT_LIST" >> $GITHUB_ENV
+
+          curl -s -o migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
+          sudo chmod +x migrate.sh
+
+      - name: Main
+        run: |
+          set +e
+
+          cd "$GITHUB_WORKSPACE/devices"
+
+          APIKEY="$( curl -s https://flash.android.com/ | grep -o '<body data-client-config=.*' | cut -d\; -f2 | cut -d\& -f1 )"
+
+          i=0
+          updatedFiles=0
+          for product in $PRODUCTS; do
+            echo "$product"
+            resJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[-1] | .licenseText = [ "sure" ]' )
+            jq '.' <<< "$resJson"
+
+            propFile="${product%_*}.pif.prop"
+            echo "$propFile"
+
+            let i++
+            if [[ -e "$propFile" && ( $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) || \
+                $( jq -r '.canary?' <<< "$resJson" ) != "true" ) ]]; then continue; fi
+
+            zipUrl=$( jq -r '.factoryImageDownloadUrl' <<< "$resJson" )
+            zipRel="$( curl -s --head $zipUrl | grep -i 'last-modified' | sed 's/last-modified: //' )"
+            secDate=""
+            secDate=$( date -d "$zipRel" +%Y-%m-05 )
+            if [[ -z "$secDate" ]]; then
+              secDate="$( date +%Y-%m-05 )"
+              zipRel="$( date )"
+            fi # Fallback to current month
+            zipRelEpoch=$( date -d "$zipRel" +%s )
+
+            rm -f min.prop
+
+          cat <<EOF | tee min.prop;
+            MANUFACTURER=Google
+            MODEL=$( cat model.list | awk -v N=$i 'NR==N{ print }' )
+            FINGERPRINT=google/$product/${product%_*}:CANARY/$( jq -r '.releaseCandidateName' <<< "$resJson" )/$( jq -r '.buildId' <<< "$resJson" ):user/release-keys
+            PRODUCT=$product
+            DEVICE=${product%_*}
+            SECURITY_PATCH="$secDate"
+            DEVICE_INITIAL_SDK_INT=32
+          EOF
+
+            rm -f "$propFile"
+            sh migrate.sh -f -a min.prop "$propFile"
+
+            sed -i 's/spoofProvider=.*/spoofProvider=0/' "$propFile"
+
+            echo "" >> "$propFile"
+            echo "# Canary Released: $( date -d @$zipRelEpoch '+%Y-%m-%d' )" >> "$propFile"
+            echo "# Estimated Expiry: $( date -d @$(( $zipRelEpoch + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> "$propFile"
+            echo "" >> "$propFile"
+            echo "# Factory img: $zipUrl" >> "$propFile"
+
+            git add "$propFile"
+
+            let updatedFiles++
+          done
+
+          echo "UPDATED_FILES=$updatedFiles" >> $GITHUB_ENV
+          cd "$GITHUB_WORKSPACE"
+
+      - name: Commit new props
+        if: env.UPDATED_FILES > 0 && !inputs.test_mode
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          git commit -m "New Canary build(s)"
+          git push
+
+      - name: Upload a Build Artifact
+        if: inputs.test_mode
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          compression-level: 9
+          name: canary
+          path: devices/*
