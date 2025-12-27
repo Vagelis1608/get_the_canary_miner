@@ -1,0 +1,33 @@
+# Build Fields
+MANUFACTURER=Google
+MODEL=Pixel 8a
+FINGERPRINT=google/akita_beta/akita:CANARY/ZP11.251121.010/14518957:user/release-keys
+BRAND=google
+PRODUCT=akita_beta
+DEVICE=akita
+RELEASE=CANARY
+ID=ZP11.251121.010
+INCREMENTAL=14518957
+TYPE=user
+TAGS=release-keys
+SECURITY_PATCH=2025-12-05
+DEVICE_INITIAL_SDK_INT=32
+
+# System Properties
+*.build.id=ZP11.251121.010
+*.security_patch=2025-12-05
+*api_level=32
+
+# Advanced Settings
+spoofBuild=1
+spoofProps=1
+spoofProvider=0
+spoofSignature=0
+spoofVendingFinger=0
+spoofVendingSdk=0
+verboseLogs=0
+
+# Canary Released: 2025-12-08
+# Estimated Expiry: 2026-01-19
+
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.251121.010-factory-e0783cbc.zip
