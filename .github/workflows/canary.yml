@@ -24,6 +24,7 @@ jobs:
       - name: Get device list and migrate.sh, aka pifork@osm0sis piggyback XD
         run: |
           mkdir "$GITHUB_WORKSPACE/devices" || true
+          mkdir "$GITHUB_WORKSPACE/betas" || true
           cd "$GITHUB_WORKSPACE/devices"
 
           wget -q -O PIXEL_VERSIONS_HTML --no-check-certificate "https://developer.android.com/about/versions" 2>&1 || exit 1;
@@ -37,6 +38,9 @@ jobs:
           curl -s -o migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
           sudo chmod +x migrate.sh
 
+          sudo cp -af migrate.sh ../betas/
+          sudo cp -af model.list ../betas/
+
       - name: Main
         run: |
           set +e
@@ -49,15 +53,17 @@ jobs:
           updatedFiles=0
           for product in $PRODUCTS; do
             echo "$product"
-            resJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[-1] | .licenseText = [ "sure" ]' )
+            resJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[-2] | .licenseText = [ "sure" ]' )
             jq '.' <<< "$resJson"
 
             propFile="${product%_*}.pif.prop"
             echo "$propFile"
 
+            if [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then cd "$GITHUB_WORKSPACE/betas"
+            else cd "$GITHUB_WORKSPACE/devices"; fi
+
             let i++
-            if [[ -e "$propFile" && ( $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) || \
-                $( jq -r '.canary?' <<< "$resJson" ) != "true" ) ]]; then continue; fi
+            if [[ -e "$propFile" && $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) ]]; then continue; fi
 
             zipUrl=$( jq -r '.factoryImageDownloadUrl' <<< "$resJson" )
             zipRel="$( curl -s --head $zipUrl | grep -i 'last-modified' | sed 's/last-modified: //' )"
@@ -105,21 +111,23 @@ jobs:
           cd "$GITHUB_WORKSPACE"
 
       - name: Commit new props
-        if: env.UPDATED_FILES > 0 && github.event_name != 'workflow_dispatch'
+        if: env.UPDATED_FILES > 0 # && github.event_name != 'workflow_dispatch'
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git commit -m "New Canary build(s)"
+          git commit -m "New build(s)"
           git push
 
       - name: Upload a Build Artifact
-        if: github.event_name == 'workflow_dispatch'
+        # if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v6.0.0
         with:
           compression-level: 9
-          name: canary
-          path: devices/*
+          name: output
+          path: |
+            devices/*
+            betas/*
 
       - name: Discord Notification
         if: env.UPDATED_FILES > 0
@@ -128,4 +136,4 @@ jobs:
         run: |
           if [[ -z "$DISCORD_WH" ]]; then exit 0; fi
 
-          curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries!\"}"' "$DISCORD_WH"
+          curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries/Betas!\"}"' "$DISCORD_WH"
