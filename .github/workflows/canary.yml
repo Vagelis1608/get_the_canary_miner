@@ -90,6 +90,10 @@ jobs:
             echo "# Canary Released: $( date -d @$zipRelEpoch '+%Y-%m-%d' )" >> "$propFile"
             echo "# Estimated Expiry: $( date -d @$(( $zipRelEpoch + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> "$propFile"
             echo "" >> "$propFile"
+            echo "# previewMetadata:" >> "$propFile"
+            echo '#   id: '$( jq -r '.previewMetadata.id' <<< "$resJson" ) >> "$propFile"
+            echo '#   releaseTrackName: '$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" ) >> "$propFile"
+            echo '#   releaseTrackVersionName: '$( jq -r '.previewMetadata.releaseTrackVersionName' <<< "$resJson" ) >> "$propFile"
             echo "# Factory img: $zipUrl" >> "$propFile"
 
             git add "$propFile"
