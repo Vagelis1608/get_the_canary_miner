@@ -59,8 +59,13 @@ jobs:
             propFile="${product%_*}.pif.prop"
             echo "$propFile"
 
-            if [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then cd "$GITHUB_WORKSPACE/betas"
-            else cd "$GITHUB_WORKSPACE/devices"; fi
+            if [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then 
+              cd "$GITHUB_WORKSPACE/betas"
+              type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
+            else
+              cd "$GITHUB_WORKSPACE/devices"
+              type="CANARY"
+            fi
 
             let i++
             if [[ -e "$propFile" && $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) ]]; then continue; fi
@@ -80,7 +85,7 @@ jobs:
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
             MODEL=$( cat model.list | awk -v N=$i 'NR==N{ print }' )
-            FINGERPRINT=google/$product/${product%_*}:CANARY/$( jq -r '.releaseCandidateName' <<< "$resJson" )/$( jq -r '.buildId' <<< "$resJson" ):user/release-keys
+            FINGERPRINT=google/$product/${product%_*}:$type/$( jq -r '.releaseCandidateName' <<< "$resJson" )/$( jq -r '.buildId' <<< "$resJson" ):user/release-keys
             PRODUCT=$product
             DEVICE=${product%_*}
             SECURITY_PATCH="$secDate"
@@ -93,7 +98,7 @@ jobs:
             sed -i 's/spoofProvider=.*/spoofProvider=0/' "$propFile"
 
             echo "" >> "$propFile"
-            echo "# Canary Released: $( date -d @$zipRelEpoch '+%Y-%m-%d' )" >> "$propFile"
+            echo "# Released: $( date -d @$zipRelEpoch '+%Y-%m-%d' )" >> "$propFile"
             echo "# Estimated Expiry: $( date -d @$(( $zipRelEpoch + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> "$propFile"
             echo "" >> "$propFile"
             echo "# previewMetadata:" >> "$propFile"
