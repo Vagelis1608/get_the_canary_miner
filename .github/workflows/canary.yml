@@ -4,12 +4,6 @@ on:
   schedule:
     - cron: '53 * * * *'
   workflow_dispatch:
-    inputs:
-      test_mode:
-        description: "Test Mode, skip git commit"
-        required: false
-        type: boolean
-        default: false
 
 jobs:
   canaries:
@@ -107,7 +101,7 @@ jobs:
           cd "$GITHUB_WORKSPACE"
 
       - name: Commit new props
-        if: env.UPDATED_FILES > 0 && !inputs.test_mode
+        if: env.UPDATED_FILES > 0 && github.event_name != 'workflow_dispatch'
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
@@ -116,7 +110,7 @@ jobs:
           git push
 
       - name: Upload a Build Artifact
-        if: inputs.test_mode
+        if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v6.0.0
         with:
           compression-level: 9
