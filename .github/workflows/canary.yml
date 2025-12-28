@@ -122,3 +122,12 @@ jobs:
           compression-level: 9
           name: canary
           path: devices/*
+
+      - name: Discord Notification
+        if: env.UPDATED_FILES > 0
+        env:
+          DISCORD_WH: ${{ secrets.DISCORD_WH }}
+        run: |
+          if [[ -z "$DISCORD_WH" ]]; then exit 0; fi
+
+          curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries!\"}"' "$DISCORD_WH"
