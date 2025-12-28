@@ -53,7 +53,7 @@ jobs:
           updatedFiles=0
           for product in $PRODUCTS; do
             echo "$product"
-            resJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[-2] | .licenseText = [ "sure" ]' )
+            resJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[-1] | .licenseText = [ "sure" ]' )
             jq '.' <<< "$resJson"
 
             propFile="${product%_*}.pif.prop"
@@ -116,7 +116,7 @@ jobs:
           cd "$GITHUB_WORKSPACE"
 
       - name: Commit new props
-        # if: env.UPDATED_FILES > 0 && github.event_name != 'workflow_dispatch'
+        if: env.UPDATED_FILES > 0 && github.event_name != 'workflow_dispatch'
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
