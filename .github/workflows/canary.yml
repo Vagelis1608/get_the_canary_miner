@@ -107,8 +107,22 @@ jobs:
             echo '#   releaseTrackVersionName: '$( jq -r '.previewMetadata.releaseTrackVersionName' <<< "$resJson" ) >> "$propFile"
             echo "# Factory img: $zipUrl" >> "$propFile"
 
-            git add "$propFile"
+            if [[ "$type" == "CANARY" ]]; then typeJ="canaries"
+            else typeJ="betas"; fi
 
+            if [[ $( jq -c --arg T "$typeJ" --arg D "${product%_*}" '.[($T)].[($D)]' ) == "null" ]]; then
+              jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg NAME "$( cat model.list | awk -v N=$i 'NR==N{ print }' )" \
+                  '.[($TYPE)] += {($DEV):{"name":($NAME), "updated":"0", "releases":[]}}' ../catalog.json > temp.json
+              mv -f temp.json ../catalog.json
+            fi
+
+            jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
+               --arg REL "$( date -d @$zipRelEpoch '+%Y-%m-%d' )" --argjson RES "$resJson" \
+               '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
+               ../catalog.json > temp.json
+            mv -f temp.json ../catalog.json
+
+            git add "$propFile" ../catalog.json
             let updatedFiles++
           done
 
@@ -131,8 +145,9 @@ jobs:
           compression-level: 9
           name: output
           path: |
-            devices/*
-            betas/*
+            devices/
+            betas/
+            catalog.json
 
       - name: Discord Notification
         if: env.UPDATED_FILES > 0
