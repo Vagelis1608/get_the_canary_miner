@@ -1,6 +1,7 @@
 {
   "canaries": {
     "akita": {
+      "name": "Pixel 8a",
       "updated": "1767017423",
       "releases": [
         {
@@ -55,6 +56,7 @@
       ]
     },
     "blazer": {
+      "name": "Pixel 10 Pro",
       "updated": "1767017424",
       "releases": [
         {
@@ -88,6 +90,7 @@
       ]
     },
     "bluejay": {
+      "name": "Pixel 6a",
       "updated": "1767017425",
       "releases": [
         {
@@ -142,6 +145,7 @@
       ]
     },
     "caiman": {
+      "name": "Pixel 9 Pro",
       "updated": "1767017426",
       "releases": [
         {
@@ -196,6 +200,7 @@
       ]
     },
     "cheetah": {
+      "name": "Pixel 7 Pro",
       "updated": "1767017428",
       "releases": [
         {
@@ -250,6 +255,7 @@
       ]
     },
     "comet": {
+      "name": "Pixel 9 Pro Fold",
       "updated": "1767017429",
       "releases": [
         {
@@ -304,6 +310,7 @@
       ]
     },
     "felix": {
+      "name": "Pixel Fold",
       "updated": "1767017430",
       "releases": [
         {
@@ -358,6 +365,7 @@
       ]
     },
     "frankel": {
+      "name": "Pixel 10",
       "updated": "1767017431",
       "releases": [
         {
@@ -391,6 +399,7 @@
       ]
     },
     "husky": {
+      "name": "Pixel 8 Pro",
       "updated": "1767017433",
       "releases": [
         {
@@ -445,6 +454,7 @@
       ]
     },
     "komodo": {
+      "name": "Pixel 9 Pro XL",
       "updated": "1767017434",
       "releases": [
         {
@@ -499,6 +509,7 @@
       ]
     },
     "lynx": {
+      "name": "Pixel 7a",
       "updated": "1767017435",
       "releases": [
         {
@@ -553,6 +564,7 @@
       ]
     },
     "mustang": {
+      "name": "Pixel 10 Pro XL",
       "updated": "1767017436",
       "releases": [
         {
@@ -586,6 +598,7 @@
       ]
     },
     "oriole": {
+      "name": "Pixel 6",
       "updated": "1767017438",
       "releases": [
         {
@@ -640,6 +653,7 @@
       ]
     },
     "panther": {
+      "name": "Pixel 7",
       "updated": "1767017439",
       "releases": [
         {
@@ -694,6 +708,7 @@
       ]
     },
     "rango": {
+      "name": "Pixel 10 Pro Fold",
       "updated": "1767017441",
       "releases": [
         {
@@ -720,6 +735,7 @@
       ]
     },
     "raven": {
+      "name": "Pixel 6 Pro",
       "updated": "1767017442",
       "releases": [
         {
@@ -774,6 +790,7 @@
       ]
     },
     "shiba": {
+      "name": "Pixel 8",
       "updated": "1767017443",
       "releases": [
         {
@@ -828,6 +845,7 @@
       ]
     },
     "tangorpro": {
+      "name": "Pixel Tablet",
       "updated": "1767017444",
       "releases": [
         {
@@ -882,6 +900,7 @@
       ]
     },
     "tegu": {
+      "name": "Pixel 9a",
       "updated": "1767017446",
       "releases": [
         {
@@ -936,6 +955,7 @@
       ]
     },
     "tokay": {
+      "name": "Pixel 9",
       "updated": "1767017447",
       "releases": [
         {
@@ -992,6 +1012,7 @@
   },
   "betas": {
     "akita": {
+      "name": "Pixel 8a",
       "updated": "1767017423",
       "releases": [
         {
@@ -1270,6 +1291,7 @@
       ]
     },
     "blazer": {
+      "name": "Pixel 10 Pro",
       "updated": "1767017424",
       "releases": [
         {
@@ -1317,6 +1339,7 @@
       ]
     },
     "bluejay": {
+      "name": "Pixel 6a",
       "updated": "1767017425",
       "releases": [
         {
@@ -1385,6 +1408,7 @@
       ]
     },
     "caiman": {
+      "name": "Pixel 9 Pro",
       "updated": "1767017426",
       "releases": [
         {
@@ -1600,6 +1624,7 @@
       ]
     },
     "cheetah": {
+      "name": "Pixel 7 Pro",
       "updated": "1767017428",
       "releases": [
         {
@@ -2109,6 +2134,7 @@
       ]
     },
     "comet": {
+      "name": "Pixel 9 Pro Fold",
       "updated": "1767017429",
       "releases": [
         {
@@ -2324,6 +2350,7 @@
       ]
     },
     "felix": {
+      "name": "Pixel Fold",
       "updated": "1767017430",
       "releases": [
         {
@@ -2770,6 +2797,7 @@
       ]
     },
     "frankel": {
+      "name": "Pixel 10",
       "updated": "1767017431",
       "releases": [
         {
@@ -2817,6 +2845,7 @@
       ]
     },
     "husky": {
+      "name": "Pixel 8 Pro",
       "updated": "1767017433",
       "releases": [
         {
@@ -3221,6 +3250,7 @@
       ]
     },
     "komodo": {
+      "name": "Pixel 9 Pro XL",
       "updated": "1767017434",
       "releases": [
         {
@@ -3443,6 +3473,7 @@
       ]
     },
     "lynx": {
+      "name": "Pixel 7a",
       "updated": "1767017435",
       "releases": [
         {
@@ -3903,6 +3934,7 @@
       ]
     },
     "mustang": {
+      "name": "Pixel 10 Pro XL",
       "updated": "1767017436",
       "releases": [
         {
@@ -3950,6 +3982,7 @@
       ]
     },
     "oriole": {
+      "name": "Pixel 6",
       "updated": "1767017438",
       "releases": [
         {
@@ -4480,6 +4513,7 @@
       ]
     },
     "panther": {
+      "name": "Pixel 7",
       "updated": "1767017439",
       "releases": [
         {
@@ -4989,6 +5023,7 @@
       ]
     },
     "rango": {
+      "name": "Pixel 10 Pro Fold",
       "updated": "1767017441",
       "releases": [
         {
@@ -5029,6 +5064,7 @@
       ]
     },
     "raven": {
+      "name": "Pixel 6 Pro",
       "updated": "1767017442",
       "releases": [
         {
@@ -5552,6 +5588,7 @@
       ]
     },
     "shiba": {
+      "name": "Pixel 8",
       "updated": "1767017443",
       "releases": [
         {
@@ -5949,6 +5986,7 @@
       ]
     },
     "tangorpro": {
+      "name": "Pixel Tablet",
       "updated": "1767017444",
       "releases": [
         {
@@ -6395,6 +6433,7 @@
       ]
     },
     "tegu": {
+      "name": "Pixel 9a",
       "updated": "1767017446",
       "releases": [
         {
@@ -6505,6 +6544,7 @@
       ]
     },
     "tokay": {
+      "name": "Pixel 9",
       "updated": "1767017447",
       "releases": [
         {
