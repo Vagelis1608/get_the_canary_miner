@@ -6,3 +6,6 @@ Just download a random .prop file from the 'devices' or 'betas' folder and put i
 
 
 ## The files under 'emulator' are for testing purposes and wont work in PIFork as-is
+
+
+<!-- GitAds-Verify: 93JDDSBJJLIZ3VBRCIN3REF387D8Y4VY -->
