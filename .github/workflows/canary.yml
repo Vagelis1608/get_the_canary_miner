@@ -9,6 +9,8 @@ jobs:
   canaries:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      APIKEY: ${{ vars.APIKEY }}
     strategy:
       fail-fast: false
 
@@ -47,7 +49,13 @@ jobs:
 
           cd "$GITHUB_WORKSPACE/devices"
 
-          APIKEY="$( curl -s https://flash.android.com/ | grep -o '<body data-client-config=.*' | cut -d\; -f2 | cut -d\& -f1 )"
+          checkAPI="$( curl -s https://flash.android.com/ | grep -o '<body data-client-config=.*' | cut -d\; -f2 | cut -d\& -f1 )"
+          if [[ "$checkAPI" != "$APIKEY" ]]; then
+            echo "NEWAPIKEY=$checkAPI" >> $GITHUB_ENV
+            echo "NEWAPI=1" >> $GITHUB_ENV
+          else
+            echo "NEWAPI=0" >> $GITHUB_ENV
+          fi
 
           i=0
           updatedFiles=0
@@ -150,10 +158,17 @@ jobs:
             catalog.json
 
       - name: Discord Notification
-        if: env.UPDATED_FILES > 0
+        if: env.UPDATED_FILES > 0 || env.NEWAPI > 0
         env:
           DISCORD_WH: ${{ secrets.DISCORD_WH }}
         run: |
           if [[ -z "$DISCORD_WH" ]]; then exit 0; fi
 
-          curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries/Betas!\"}"' "$DISCORD_WH"
+          if [[ "$UPDATED_FILES" -gt 0 ]]; then
+            curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries/Betas!\"}"' "$DISCORD_WH"
+          fi
+
+          if [[ "$NEWAPI" -gt 0 ]]; then
+            whdata="{\"content\":\"New API Key Found!\n$NEWAPIKEY\"}"
+            curl -s -X POST -o /dev/null -F "payload_json=${whdata}" "$DISCORD_WH"
+          fi
