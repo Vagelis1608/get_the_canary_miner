@@ -17,8 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Latest jq
+      - name: Install Latest jq, strings, pv
         run: |
+          sudo apt update
+          sudo apt install -y binutils pv
+
           wget -q --no-check-certificate -O /usr/local/bin/jq https://github.com/jqlang/jq/releases/latest/download/jq-linux64
           sudo chmod 755 /usr/local/bin/jq
           jq --version
@@ -79,24 +82,65 @@ jobs:
             if [[ -e "$propFile" && $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) ]]; then continue; fi
 
             zipUrl=$( jq -r '.factoryImageDownloadUrl' <<< "$resJson" )
-            zipRel="$( curl -s --head $zipUrl | grep -i 'last-modified' | sed 's/last-modified: //' )"
+            zipSize="$( curl -s --head $zipUrl | grep -i 'content-length' | cut -d' ' -f2 | tr -d '[[:space:]]' )"
+            echo "$zipUrl"' - '"$zipSize"
             secDate=""
-            secDate=$( date -d "$zipRel" +%Y-%m-05 )
-            if [[ -z "$secDate" ]]; then
+            fingerprint=""
+            i=0
+            startCh=0
+            chuckSize=$(( 8 * 1024 * 1024 ))
+            while [[ ( -z "$secDate" || -z "$fingerprint" ) && "$startCh" -lt "$zipSize" ]]; do
+              startCh=$(( $i * $chuckSize ))
+              endCh=$(( ( $i + 1 ) * $chuckSize + 256 ))
+              if [[ "$endCh" -gt "$zipSize" ]]; then endCh=$zipSize; fi
+              rm -f chunk.bin
+          
+              statusCode=$( curl -s -v -o chunk.bin -H 'Accept-Encoding: identity' --connect-timeout 60 \
+                      -H "Range: bytes=$startCh-$endCh" $zipUrl 2>&1 | grep '< HTTP/' | cut -d' ' -f3 )
+              
+              if [[ "$statusCode" -ne 206 ]]; then break; fi # Partial download failed 
+
+              fingerT="$( grep -ia 'com.android.build.boot.fingerprint' chunk.bin  | strings | grep 'google.*keys$' )"
+              if [[ -n "$fingerT" ]]; then fingerprint="$fingerT"; fi
+
+              patchT="$( grep -ia 'com.android.build.boot.security_patch' chunk.bin | strings | grep '^2' )"
+              if [[ -n "$patchT" ]]; then secDate="$patchT"; fi
+          
+              let i++
+            done
+
+            if [[ -z "$fingerprint" || -z "$secDate" ]]; then
+              rm -f chunk.bin
+
+              fallbackSize="$(( 128 * 1024 * 1024 ))"  # 128MBs
+              if [[ "$zipSize" -gt 0 && "$fallbackSize" -gt "$zipSize" ]]; then fallbackSize="$zipSize"; fi
+
+              curl -s -o chunk.bin -H 'Accept-Encoding: identity' --connect-timeout 60 $zipUrl | \
+                    pv -S --size $fallbackSize > chunk.bin
+
+              if [[ -z "$fingerprint" ]]; then fingerprint="$( grep -ia 'com.android.build.boot.fingerprint' chunk.bin  | strings | grep 'google.*keys$' )"; fi
+              if [[ -z "$secDate" ]]; then secDate="$( grep -ia 'com.android.build.boot.security_patch' chunk.bin | strings | grep '^2' )"; fi
+
+              rm -f chunk.bin
+            fi
+
+            if [[ -z "$fingerprint" ]]; then # Fallback to FP assembly
+              fingerprint=google/$product/${product%_*}:$type/$( jq -r '.releaseCandidateName' <<< "$resJson" )/$( jq -r '.buildId' <<< "$resJson" ):user/release-keys
+            fi
+
+            if [[ -z "$secDate" ]]; then # Fallback to current month
               secDate="$( date +%Y-%m-05 )"
-              zipRel="$( date )"
-            fi # Fallback to current month
-            zipRelEpoch=$( date -d "$zipRel" +%s )
+            fi 
 
             rm -f min.prop
 
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
             MODEL=$( cat model.list | awk -v N=$i 'NR==N{ print }' )
-            FINGERPRINT=google/$product/${product%_*}:$type/$( jq -r '.releaseCandidateName' <<< "$resJson" )/$( jq -r '.buildId' <<< "$resJson" ):user/release-keys
+            FINGERPRINT=$fingerprint
             PRODUCT=$product
             DEVICE=${product%_*}
-            SECURITY_PATCH="$secDate"
+            SECURITY_PATCH=$secDate
             DEVICE_INITIAL_SDK_INT=32
           EOF
 
@@ -106,8 +150,8 @@ jobs:
             sed -i 's/spoofProvider=.*/spoofProvider=0/' "$propFile"
 
             echo "" >> "$propFile"
-            echo "# Released: $( date -d @$zipRelEpoch '+%Y-%m-%d' )" >> "$propFile"
-            echo "# Estimated Expiry: $( date -d @$(( $zipRelEpoch + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> "$propFile"
+            echo "# Released: $( date '+%Y-%m-%d' )" >> "$propFile"
+            echo "# Estimated Expiry: $( date -d @$(( $( date +%s ) + 60 * 60 * 24 * 7 * 6 )) '+%Y-%m-%d' )" >> "$propFile"
             echo "" >> "$propFile"
             echo "# previewMetadata:" >> "$propFile"
             echo '#   id: '$( jq -r '.previewMetadata.id' <<< "$resJson" ) >> "$propFile"
@@ -125,7 +169,7 @@ jobs:
             fi
 
             jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
-               --arg REL "$( date -d @$zipRelEpoch '+%Y-%m-%d' )" --argjson RES "$resJson" \
+               --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
                '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
                ../catalog.json > temp.json
             if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json ../catalog.json; fi
