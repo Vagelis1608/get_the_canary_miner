@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
-MODEL=Pixel 10 Pro XL
-FINGERPRINT=google/mustang_beta/mustang:CANARY/ZP11.251121.010/14518957:user/release-keys
+MODEL=Pixel 6a
+FINGERPRINT=google/mustang_beta/mustang:CANARY/ZP11.251212.007/14649019:user/release-keys
 BRAND=google
 PRODUCT=mustang_beta
 DEVICE=mustang
 RELEASE=CANARY
-ID=ZP11.251121.010
-INCREMENTAL=14518957
+ID=ZP11.251212.007
+INCREMENTAL=14649019
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2025-12-05
+SECURITY_PATCH=2026-01-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.251121.010
-*.security_patch=2025-12-05
+*.build.id=ZP11.251212.007
+*.security_patch=2026-01-05
 *api_level=32
 
 # Advanced Settings
@@ -27,7 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Canary Released: 2025-12-08
-# Estimated Expiry: 2026-01-19
+# Released: 2026-01-10
+# Estimated Expiry: 2026-02-21
 
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.251121.010-factory-6abfe3ee.zip
+# previewMetadata:
+#   id: canary-202601
+#   releaseTrackName: Android Canary
+#   releaseTrackVersionName: Canary 202601
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.251212.007-factory-290faa03.zip
