@@ -121,14 +121,14 @@ jobs:
             if [[ $( jq -c --arg T "$typeJ" --arg D "${product%_*}" '.[($T)].[($D)]' ) == "null" ]]; then
               jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg NAME "$( cat model.list | awk -v N=$i 'NR==N{ print }' )" \
                   '.[($TYPE)] += {($DEV):{"name":($NAME), "updated":"0", "releases":[]}}' ../catalog.json > temp.json
-              mv -f temp.json ../catalog.json
+              if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json ../catalog.json; fi
             fi
 
             jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
                --arg REL "$( date -d @$zipRelEpoch '+%Y-%m-%d' )" --argjson RES "$resJson" \
                '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
                ../catalog.json > temp.json
-            mv -f temp.json ../catalog.json
+            if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json ../catalog.json; fi
 
             git add "$propFile" ../catalog.json
             let updatedFiles++
