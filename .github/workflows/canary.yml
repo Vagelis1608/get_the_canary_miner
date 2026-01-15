@@ -219,10 +219,10 @@ jobs:
           if [[ -z "$DISCORD_WH" ]]; then exit 0; fi
 
           if [[ "$UPDATED_FILES" -gt 0 ]]; then
-            curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries/Betas!\"}"' "$DISCORD_WH" 2>&1 | grep -iv 'https://discord.com/api/webhooks/'
+            curl -s -X POST -o /dev/null -F 'payload_json="{\"content\":\"New Canaries/Betas!\"}"' "$DISCORD_WH"
           fi
 
           if [[ "$NEWAPI" -gt 0 ]]; then
             whdata="{\"content\":\"New API Key Found!\n$NEWAPIKEY\"}"
-            curl -s -X POST -o /dev/null -F "payload_json=${whdata}" "$DISCORD_WH" 2>&1 | grep -iv 'https://discord.com/api/webhooks/'
+            curl -s -X POST -o /dev/null -F "payload_json=${whdata}" "$DISCORD_WH"
           fi
