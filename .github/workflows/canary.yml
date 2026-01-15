@@ -60,12 +60,14 @@ jobs:
             echo "NEWAPI=0" >> $GITHUB_ENV
           fi
 
-          i=0
+          index=0
           updatedFiles=0
           for product in $PRODUCTS; do
             echo "$product"
             activeJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[] | select( .previewMetadata.active ) | .licenseText = [ "sure" ]' )
             jq '.' <<< "$activeJson"
+
+            let index++
 
             # Error out if there are more than exactly one beta and one canary active
             activeNames=( $( jq -r '.releaseCandidateName' <<< "$activeJson" ) )
@@ -86,7 +88,6 @@ jobs:
               type="CANARY"
             fi
 
-            let i++
             if [[ -e "$propFile" && $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) ]]; then continue; fi
 
             zipUrl=$( jq -r '.factoryImageDownloadUrl' <<< "$resJson" )
@@ -144,7 +145,7 @@ jobs:
 
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
-            MODEL=$( cat model.list | awk -v N=$i 'NR==N{ print }' )
+            MODEL=$( cat model.list | awk -v N=$index 'NR==N{ print }' )
             FINGERPRINT=$fingerprint
             PRODUCT=$product
             DEVICE=${product%_*}
@@ -171,7 +172,7 @@ jobs:
             else typeJ="betas"; fi
 
             if [[ $( jq -c --arg T "$typeJ" --arg D "${product%_*}" '.[($T)].[($D)]' ) == "null" ]]; then
-              jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg NAME "$( cat model.list | awk -v N=$i 'NR==N{ print }' )" \
+              jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
                   '.[($TYPE)] += {($DEV):{"name":($NAME), "updated":"0", "releases":[]}}' ../catalog.json > temp.json
               if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json ../catalog.json; fi
             fi
