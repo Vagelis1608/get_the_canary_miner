@@ -64,8 +64,16 @@ jobs:
           updatedFiles=0
           for product in $PRODUCTS; do
             echo "$product"
-            resJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[-1] | .licenseText = [ "sure" ]' )
-            jq '.' <<< "$resJson"
+            activeJson=$( curl -s --header 'Referer: https://flash.android.com' "https://content-flashstation-pa.googleapis.com/v1/builds?product=$product&key=$APIKEY" | jq -c '.flashstationBuild.[] | select( .previewMetadata.active ) | .licenseText = [ "sure" ]' )
+            jq '.' <<< "$activeJson"
+
+            # Error out if there are more than exactly one beta and one canary active
+            activeNames=( $( jq -r '.releaseCandidateName' <<< "$activeJson" ) )
+            canaryStatuses=$( jq -j '.previewMetadata.canary' <<< "$activeJson" )
+            if [[ "${#activeNames[@]}" -ne 2 || ( "$canaryStatuses" != "truefalse" && "$canaryStatuses" != "falsetrue" ) ]]; then exit 21; fi
+
+            for name in ${activeNames[@]}; do
+            resJson=$( jq -c --arg NAME "$name" '. | select( .releaseCandidateName == $NAME )' <<< "$activeJson" )
 
             propFile="${product%_*}.pif.prop"
             echo "$propFile"
@@ -103,7 +111,7 @@ jobs:
               fingerT="$( grep -ia 'com.android.build.boot.fingerprint' chunk.bin  | strings | grep 'google.*keys$' )"
               if [[ -n "$fingerT" ]]; then fingerprint="$fingerT"; fi
 
-              patchT="$( grep -ia 'com.android.build.boot.security_patch' chunk.bin | strings | grep '^2' )"
+              patchT="$( grep -ia 'com.android.build.boot.security_patch' chunk.bin | strings | grep '^2' )" # TODO: Update this in the year 3000
               if [[ -n "$patchT" ]]; then secDate="$patchT"; fi
           
               let i++
@@ -119,7 +127,7 @@ jobs:
                     pv -S --size $fallbackSize > chunk.bin
 
               if [[ -z "$fingerprint" ]]; then fingerprint="$( grep -ia 'com.android.build.boot.fingerprint' chunk.bin  | strings | grep 'google.*keys$' )"; fi
-              if [[ -z "$secDate" ]]; then secDate="$( grep -ia 'com.android.build.boot.security_patch' chunk.bin | strings | grep '^2' )"; fi
+              if [[ -z "$secDate" ]]; then secDate="$( grep -ia 'com.android.build.boot.security_patch' chunk.bin | strings | grep '^2' )"; fi # TODO: Update this in the year 3000
 
               rm -f chunk.bin
             fi
@@ -176,6 +184,8 @@ jobs:
 
             git add "$propFile" ../catalog.json
             let updatedFiles++
+
+            done # for name in ${activeNames[@]}
           done
 
           echo "UPDATED_FILES=$updatedFiles" >> $GITHUB_ENV
