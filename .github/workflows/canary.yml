@@ -145,7 +145,7 @@ jobs:
 
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
-            MODEL=$( cat model.list | awk -v N=$index 'NR==N{ print }' )
+            MODEL=$( jq -r --arg PR "${product%_*}" '.canaries.[$PR].name' ../catalog.json )
             FINGERPRINT=$fingerprint
             PRODUCT=$product
             DEVICE=${product%_*}
