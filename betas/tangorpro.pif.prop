@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel Tablet
-FINGERPRINT=google/tangorpro_beta/tangorpro:16/CP11.251209.007.A1/14691868:user/release-keys
+FINGERPRINT=google/tangorpro_beta/tangorpro:16/CP11.251209.009.A1/14840729:user/release-keys
 BRAND=google
 PRODUCT=tangorpro_beta
 DEVICE=tangorpro
 RELEASE=16
-ID=CP11.251209.007.A1
-INCREMENTAL=14691868
+ID=CP11.251209.009.A1
+INCREMENTAL=14840729
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-01-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP11.251209.007.A1
+*.build.id=CP11.251209.009.A1
 *.security_patch=2026-01-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-01-15
-# Estimated Expiry: 2026-02-26
+# Released: 2026-02-10
+# Estimated Expiry: 2026-03-24
 
 # previewMetadata:
-#   id: baklava-qpr3-beta2
+#   id: baklava-qpr3-beta2.1
 #   releaseTrackName: Android 16 QPR3
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/baklava/images/factory/tangorpro_beta-cp11.251209.007.a1-factory-3be2a862.zip
+#   releaseTrackVersionName: Beta 2.1
+# Factory img: https://dl.google.com/developers/android/baklava/images/factory/tangorpro_beta-cp11.251209.009.a1-factory-d1f5b106.zip
