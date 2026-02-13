@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 6a
-FINGERPRINT=google/bluejay_beta/bluejay:CANARY/ZP11.251212.007/14649019:user/release-keys
+FINGERPRINT=google/bluejay_beta/bluejay:CANARY/ZP11.260123.011/14822050:user/release-keys
 BRAND=google
 PRODUCT=bluejay_beta
 DEVICE=bluejay
 RELEASE=CANARY
-ID=ZP11.251212.007
-INCREMENTAL=14649019
+ID=ZP11.260123.011
+INCREMENTAL=14822050
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-01-05
+SECURITY_PATCH=2026-02-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.251212.007
-*.security_patch=2026-01-05
+*.build.id=ZP11.260123.011
+*.security_patch=2026-02-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-01-15
-# Estimated Expiry: 2026-02-26
+# Released: 2026-02-13
+# Estimated Expiry: 2026-03-27
 
 # previewMetadata:
-#   id: canary-202601
+#   id: canary-202602
 #   releaseTrackName: Android Canary
-#   releaseTrackVersionName: Canary 202601
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.251212.007-factory-1b46d77e.zip
+#   releaseTrackVersionName: Canary 202602
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260123.011-factory-964af292.zip
