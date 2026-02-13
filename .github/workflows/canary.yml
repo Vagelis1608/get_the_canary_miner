@@ -8,7 +8,7 @@ on:
 jobs:
   canaries:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 180
     env:
       APIKEY: ${{ vars.APIKEY }}
     strategy:
