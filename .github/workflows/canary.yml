@@ -30,6 +30,7 @@ jobs:
         run: |
           mkdir "$GITHUB_WORKSPACE/devices" || true
           mkdir "$GITHUB_WORKSPACE/betas" || true
+          mkdir "$GITHUB_WORKSPACE/betas/cinnamonbun" || true
           cd "$GITHUB_WORKSPACE/devices"
 
           wget -q -O PIXEL_VERSIONS_HTML --no-check-certificate "https://developer.android.com/about/versions" 2>&1 || exit 1;
@@ -45,6 +46,8 @@ jobs:
 
           sudo cp -af migrate.sh ../betas/
           sudo cp -af model.list ../betas/
+          sudo cp -af migrate.sh ../betas/cinnamonbun/
+          sudo cp -af model.list ../betas/cinnamonbun/
 
       - name: Main
         run: |
@@ -72,7 +75,7 @@ jobs:
             # Error out if there are more than exactly one beta and one canary active
             activeNames=( $( jq -r '.releaseCandidateName' <<< "$activeJson" ) )
             canaryStatuses=$( jq -j '.previewMetadata.canary' <<< "$activeJson" )
-            if [[ "${#activeNames[@]}" -ne 2 || ( "$canaryStatuses" != "truefalse" && "$canaryStatuses" != "falsetrue" ) ]]; then exit 21; fi
+            # if [[ "${#activeNames[@]}" -ne 2 || ( "$canaryStatuses" != "truefalse" && "$canaryStatuses" != "falsetrue" ) ]]; then exit 21; fi
 
             for name in ${activeNames[@]}; do
             resJson=$( jq -c --arg NAME "$name" '. | select( .releaseCandidateName == $NAME )' <<< "$activeJson" )
@@ -80,7 +83,10 @@ jobs:
             propFile="${product%_*}.pif.prop"
             echo "$propFile"
 
-            if [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then 
+            if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun' ) ]]; then
+              cd "$GITHUB_WORKSPACE/betas/cinnamonbun"
+              type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
+            elif [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then 
               cd "$GITHUB_WORKSPACE/betas"
               type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
             else
