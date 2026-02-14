@@ -1,0 +1,37 @@
+# Build Fields
+MANUFACTURER=Google
+MODEL=Pixel 8a
+FINGERPRINT=google/akita_beta/akita:17/CP21.260116.011.B1/14876373:user/release-keys
+BRAND=google
+PRODUCT=akita_beta
+DEVICE=akita
+RELEASE=17
+ID=CP21.260116.011.B1
+INCREMENTAL=14876373
+TYPE=user
+TAGS=release-keys
+SECURITY_PATCH=2026-02-05
+DEVICE_INITIAL_SDK_INT=32
+
+# System Properties
+*.build.id=CP21.260116.011.B1
+*.security_patch=2026-02-05
+*api_level=32
+
+# Advanced Settings
+spoofBuild=1
+spoofProps=1
+spoofProvider=0
+spoofSignature=0
+spoofVendingFinger=0
+spoofVendingSdk=0
+verboseLogs=0
+
+# Released: 2026-02-14
+# Estimated Expiry: 2026-03-28
+
+# previewMetadata:
+#   id: cinnamonbun-beta1
+#   releaseTrackName: Android 17
+#   releaseTrackVersionName: Beta 1
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-cp21.260116.011.b1-factory-3a0455a1.zip
