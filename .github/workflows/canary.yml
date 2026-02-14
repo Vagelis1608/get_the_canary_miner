@@ -12,7 +12,6 @@ concurrency:
 jobs:
   canaries:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
     env:
       APIKEY: ${{ vars.APIKEY }}
     strategy:
