@@ -5,10 +5,14 @@ on:
     - cron: '23,53 * * * *'
   workflow_dispatch:
 
+concurrency:
+  group: no-dup
+  cancel-in-progress: false
+
 jobs:
   canaries:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 300
     env:
       APIKEY: ${{ vars.APIKEY }}
     strategy:
@@ -72,6 +76,8 @@ jobs:
 
             let index++
 
+            catalog="../catalog.json"
+
             # Error out if there are more than exactly one beta and one canary active
             activeNames=( $( jq -r '.releaseCandidateName' <<< "$activeJson" ) )
             canaryStatuses=$( jq -j '.previewMetadata.canary' <<< "$activeJson" )
@@ -86,6 +92,7 @@ jobs:
             if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun' ) ]]; then
               cd "$GITHUB_WORKSPACE/betas/cinnamonbun"
               type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
+              catalog="../../catalog.json"
             elif [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then 
               cd "$GITHUB_WORKSPACE/betas"
               type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
@@ -151,7 +158,7 @@ jobs:
 
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
-            MODEL=$( jq -r --arg PR "${product%_*}" '.canaries.[$PR].name' ../catalog.json )
+            MODEL=$( jq -r --arg PR "${product%_*}" '.canaries.[$PR].name' "$catalog" )
             FINGERPRINT=$fingerprint
             PRODUCT=$product
             DEVICE=${product%_*}
@@ -179,17 +186,17 @@ jobs:
 
             if [[ $( jq -c --arg T "$typeJ" --arg D "${product%_*}" '.[($T)].[($D)]' ) == "null" ]]; then
               jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
-                  '.[($TYPE)] += {($DEV):{"name":($NAME), "updated":"0", "releases":[]}}' ../catalog.json > temp.json
-              if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json ../catalog.json; fi
+                  '.[($TYPE)] += {($DEV):{"name":($NAME), "updated":"0", "releases":[]}}' "$catalog" > temp.json
+              if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
             fi
 
             jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
                --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
                '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
-               ../catalog.json > temp.json
-            if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json ../catalog.json; fi
+               "$catalog" > temp.json
+            if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
 
-            git add "$propFile" ../catalog.json
+            git add "$propFile" "$catalog"
             let updatedFiles++
 
             done # for name in ${activeNames[@]}
