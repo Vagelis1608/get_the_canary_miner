@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 7 Pro
-FINGERPRINT=google/cheetah_beta/cheetah:17/CP21.260206.011.A1/14911996:user/release-keys
+FINGERPRINT=google/cheetah_beta/cheetah:17/CP21.260116.011.A1/14876943:user/release-keys
 BRAND=google
 PRODUCT=cheetah_beta
 DEVICE=cheetah
 RELEASE=17
-ID=CP21.260206.011.A1
-INCREMENTAL=14911996
+ID=CP21.260116.011.A1
+INCREMENTAL=14876943
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-02-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP21.260206.011.A1
+*.build.id=CP21.260116.011.A1
 *.security_patch=2026-02-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-02-26
-# Estimated Expiry: 2026-04-09
+# Released: 2026-02-14
+# Estimated Expiry: 2026-03-28
 
 # previewMetadata:
-#   id: cinnamonbun-beta2
+#   id: cinnamonbun-beta1
 #   releaseTrackName: Android 17
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/cheetah_beta-cp21.260206.011.a1-factory-b8bdf1c1.zip
+#   releaseTrackVersionName: Beta 1
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/cheetah_beta-cp21.260116.011.a1-factory-b36fb50e.zip

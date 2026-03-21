@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 10
-FINGERPRINT=google/frankel_beta/frankel:17/CP21.260206.011/14911669:user/release-keys
+FINGERPRINT=google/frankel_beta/frankel:17/CP21.260116.011.B1/14876373:user/release-keys
 BRAND=google
 PRODUCT=frankel_beta
 DEVICE=frankel
 RELEASE=17
-ID=CP21.260206.011
-INCREMENTAL=14911669
+ID=CP21.260116.011.B1
+INCREMENTAL=14876373
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-02-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP21.260206.011
+*.build.id=CP21.260116.011.B1
 *.security_patch=2026-02-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-02-27
-# Estimated Expiry: 2026-04-10
+# Released: 2026-02-14
+# Estimated Expiry: 2026-03-28
 
 # previewMetadata:
-#   id: cinnamonbun-beta2
+#   id: cinnamonbun-beta1
 #   releaseTrackName: Android 17
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp21.260206.011-factory-7826a404.zip
+#   releaseTrackVersionName: Beta 1
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp21.260116.011.b1-factory-6e9022c9.zip
