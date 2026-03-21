@@ -41,6 +41,7 @@ jobs:
           wget -q -O PIXEL_FI_HTML --no-check-certificate "https://developer.android.com$(grep -o 'href=".*download.*"' PIXEL_LATEST_HTML | grep 'qpr' | cut -d\" -f2 | head -n1 | tail -n1)" 2>&1 || exit 1;
           grep -A1 'tr id=' PIXEL_FI_HTML | grep 'td' | sed 's;.*<td>\(.*\)</td>;\1;' > model.list
           PRODUCT_LIST="$(grep 'tr id=' PIXEL_FI_HTML | sed 's;.*<tr id="\(.*\)">;\1_beta;' | tr '\n' ' ')";
+          echo "$PRODUCT_LIST"
 
           echo "PRODUCTS=$PRODUCT_LIST" >> $GITHUB_ENV
 
