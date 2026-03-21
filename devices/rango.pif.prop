@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 10 Pro Fold
-FINGERPRINT=google/rango_beta/rango:CANARY/ZP11.260123.011/14822050:user/release-keys
+FINGERPRINT=google/rango_beta/rango:CANARY/ZP11.260220.007/14993212:user/release-keys
 BRAND=google
 PRODUCT=rango_beta
 DEVICE=rango
 RELEASE=CANARY
-ID=ZP11.260123.011
-INCREMENTAL=14822050
+ID=ZP11.260220.007
+INCREMENTAL=14993212
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-02-05
+SECURITY_PATCH=2026-03-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.260123.011
-*.security_patch=2026-02-05
+*.build.id=ZP11.260220.007
+*.security_patch=2026-03-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-02-13
-# Estimated Expiry: 2026-03-27
+# Released: 2026-03-21
+# Estimated Expiry: 2026-05-02
 
 # previewMetadata:
-#   id: canary-202602
+#   id: canary-202603
 #   releaseTrackName: Android Canary
-#   releaseTrackVersionName: Canary 202602
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260123.011-factory-ad9637f1.zip
+#   releaseTrackVersionName: Canary 202603
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260220.007-factory-7a1bc134.zip
