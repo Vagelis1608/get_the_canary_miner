@@ -6,8 +6,3 @@ Just download a random .prop file from the 'devices' or 'betas' folder and put i
 
 
 ## The files under 'emulator' are for testing purposes and wont work in PIFork as-is
-
-
-
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=vagelis1608/get_the_canary_miner@github)](https://gitads.dev/v1/ad-track?source=vagelis1608/get_the_canary_miner@github)
