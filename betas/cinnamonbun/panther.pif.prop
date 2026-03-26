@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 7
-FINGERPRINT=google/panther_beta/panther:CinnamonBun/CP21.260206.011.A1/14911996:user/release-keys
+FINGERPRINT=google/panther_beta/panther:17/CP21.260306.017/15063635:user/release-keys
 BRAND=google
 PRODUCT=panther_beta
 DEVICE=panther
-RELEASE=CinnamonBun
-ID=CP21.260206.011.A1
-INCREMENTAL=14911996
+RELEASE=17
+ID=CP21.260306.017
+INCREMENTAL=15063635
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2025-12-05
+SECURITY_PATCH=2026-03-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP21.260206.011.A1
-*.security_patch=2025-12-05
+*.build.id=CP21.260306.017
+*.security_patch=2026-03-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-03-21
-# Estimated Expiry: 2026-05-02
+# Released: 2026-03-26
+# Estimated Expiry: 2026-05-07
 
 # previewMetadata:
-#   id: cinnamonbun-beta2
+#   id: cinnamonbun-beta3
 #   releaseTrackName: Android 17
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/panther_beta-cp21.260206.011.a1-factory-a09c977d.zip
+#   releaseTrackVersionName: Beta 3
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/panther_beta-cp21.260306.017-factory-7920a79e.zip
