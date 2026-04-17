@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 6
-FINGERPRINT=google/oriole_beta/oriole:CANARY/ZP11.260220.007/14993212:user/release-keys
+FINGERPRINT=google/oriole_beta/oriole:CANARY/ZP11.260320.008/15205769:user/release-keys
 BRAND=google
 PRODUCT=oriole_beta
 DEVICE=oriole
 RELEASE=CANARY
-ID=ZP11.260220.007
-INCREMENTAL=14993212
+ID=ZP11.260320.008
+INCREMENTAL=15205769
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-03-05
+SECURITY_PATCH=2026-04-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.260220.007
-*.security_patch=2026-03-05
+*.build.id=ZP11.260320.008
+*.security_patch=2026-04-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-03-21
-# Estimated Expiry: 2026-05-02
+# Released: 2026-04-17
+# Estimated Expiry: 2026-05-29
 
 # previewMetadata:
-#   id: canary-202603
+#   id: canary-202604
 #   releaseTrackName: Android Canary
-#   releaseTrackVersionName: Canary 202603
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/oriole_beta-zp11.260220.007-factory-ca4732d1.zip
+#   releaseTrackVersionName: Canary 202604
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/oriole_beta-zp11.260320.008-factory-19556592.zip
