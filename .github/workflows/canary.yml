@@ -4,6 +4,16 @@ on:
   schedule:
     - cron: '23,53 * * * *'
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Test Mode (no commit)"
+        type: boolean
+        default: false
+        required: false
+      g_descrewup:
+        description: "Manually include device (product:name)"
+        type: string
+        required: false
 
 concurrency:
   group: no-dup
@@ -30,6 +40,8 @@ jobs:
           jq --version
 
       - name: Get device list and migrate.sh, aka pifork@osm0sis piggyback XD
+        env:
+          MANUAL: ${{ inputs.g_descrewup }}
         run: |
           mkdir "$GITHUB_WORKSPACE/devices" || true
           mkdir "$GITHUB_WORKSPACE/betas" || true
@@ -41,6 +53,21 @@ jobs:
           wget -q -O PIXEL_FI_HTML --no-check-certificate "https://developer.android.com$(grep -o 'href=".*download.*"' PIXEL_LATEST_HTML | grep 'qpr' | cut -d\" -f2 | head -n1 | tail -n1)" 2>&1 || exit 1;
           grep -A1 'tr id=' PIXEL_FI_HTML | grep 'td' | sed 's;.*<td>\(.*\)</td>;\1;' > model.list
           PRODUCT_LIST="$(grep 'tr id=' PIXEL_FI_HTML | sed 's;.*<tr id="\(.*\)">;\1_beta;' | tr '\n' ' ')";
+
+          # Manual device injection
+          if [[ -n "$MANUAL" ]]; then
+            PRODUCT_LIST+=" ${MANUAL%%\:*}_beta"
+            cut -d: -f2 <<< "${MANUAL}" >> model.list
+          fi
+          
+          # Check catalog for devices missing from the page
+          for device in $( jq -r '.[] | keys | .[]' ../catalog.json ); do
+            if [[ "$PRODUCT_LIST" != *"$device"* ]]; then
+              PRODUCT_LIST+=" ${device}_beta"
+              jq -r --arg D "$device" '.canaries.[($D)].name' ../catalog.json >> model.list
+            fi
+          done
+
           echo "$PRODUCT_LIST"
 
           echo "PRODUCTS=$PRODUCT_LIST" >> $GITHUB_ENV
@@ -214,7 +241,7 @@ jobs:
           cd "$GITHUB_WORKSPACE"
 
       - name: Commit new props
-        if: env.UPDATED_FILES > 0 && github.event_name != 'workflow_dispatch'
+        if: env.UPDATED_FILES > 0 && !inputs.test_mode
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
@@ -223,7 +250,7 @@ jobs:
           git push
 
       - name: Upload a Build Artifact
-        if: github.event_name == 'workflow_dispatch'
+        if: inputs.test_mode
         uses: actions/upload-artifact@v6.0.0
         with:
           compression-level: 9
