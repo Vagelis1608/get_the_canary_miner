@@ -219,17 +219,30 @@ jobs:
             if [[ "$type" == "CANARY" ]]; then typeJ="canaries"
             else typeJ="betas"; fi
 
-            if [[ $( jq -c --arg T "$typeJ" --arg D "${product%_*}" '.[($T)].[($D)]' ) == "null" ]]; then
-              jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
-                  '.[($TYPE)] += {($DEV):{"name":($NAME), "updated":"0", "releases":[]}}' "$catalog" > temp.json
+            if [[ $( jq -c --arg D "${product%_*}" '.canaries.[($D)]' ) == "null" ]]; then
+              # Pull any existing history of new device(s)
+              curl -s --header 'Referer: https://flash.android.com' \
+                      "https://content-flashstation-pa.googleapis.com/v1/builds?product=${device}_beta&key=$APIKEY" | \
+                      jq -c '.flashstationBuild | .[].licenseText = [ "sure" ]' > dev.json
+                      
+              jq 'reduce (.[] | select( .previewMetadata.canary? ) | {"releaseId":(.previewMetadata.id), "target":(.target), "buildName":(.releaseCandidateName), "buildId":(.buildId), "url":(.factoryImageDownloadUrl)}) as $obj ([]; . += [$obj])' dev.json > can.json
+              jq 'reduce (.[] | select( .previewMetadata.canary? | not ) | {"releaseId":(.previewMetadata.id), "target":(.target), "buildName":(.releaseCandidateName), "buildId":(.buildId), "url":(.factoryImageDownloadUrl)}) as $obj ([]; . += [$obj])' dev.json > bet.json
+                  
+              jq --arg DEV "${product%_*}" --arg T "$( date +%s )" --slurpfile LIST can.json \
+                      --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
+                      '.canaries += {($DEV):{"name":($NAME), "updated":($T),"releases":($LIST | .[])}}' "$catalog" > temp1.json
+              jq --arg DEV "${product%_*}" --arg T "$( date +%s )" --slurpfile LIST bet.json \
+                      --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
+                      '.betas += {($DEV):{"name":($NAME), "updated":($T),"releases":($LIST | .[])}}' temp1.json > temp2.json
+              if [[ "$( wc -l < temp2.json )" -gt 42 ]]; then mv -f temp2.json "$catalog"; fi
+              rm -f temp*.json dev.json can.json bet.json
+            else
+              jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
+                      --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
+                      '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
+                      "$catalog" > temp.json
               if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
             fi
-
-            jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
-               --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
-               '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
-               "$catalog" > temp.json
-            if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
 
             git add "$propFile" "$catalog"
             let updatedFiles++
