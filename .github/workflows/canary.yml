@@ -191,9 +191,12 @@ jobs:
 
             rm -f min.prop
 
+          modelName=""
+          modelName="$( jq -r --arg PR ${product%_*} '.canaries.[$PR].name' $catalog )"
+          if [[ -z "$modelName" || "$modelName" == "null" ]]; then modelName="$( cat model.list | awk -v N=$index 'NR==N{ print }' )"; fi
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
-            MODEL=$( jq -r --arg PR "${product%_*}" '.canaries.[$PR].name' "$catalog" )
+            MODEL=$modelName
             FINGERPRINT=$fingerprint
             PRODUCT=$product
             DEVICE=${product%_*}
