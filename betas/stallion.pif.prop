@@ -1,10 +1,10 @@
 # Build Fields
 MANUFACTURER=Google
-MODEL=Pixel Fold
-FINGERPRINT=google/felix_beta/felix:CinnamonBun/CP31.260403.005.A1/15246833:user/release-keys
+MODEL=null
+FINGERPRINT=google/stallion_beta/stallion:CinnamonBun/CP31.260403.005.A1/15246833:user/release-keys
 BRAND=google
-PRODUCT=felix_beta
-DEVICE=felix
+PRODUCT=stallion_beta
+DEVICE=stallion
 RELEASE=CinnamonBun
 ID=CP31.260403.005.A1
 INCREMENTAL=15246833
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-04-23
-# Estimated Expiry: 2026-06-04
+# Released: 2026-04-22
+# Estimated Expiry: 2026-06-03
 
 # previewMetadata:
 #   id: cinnamonbun-qpr1-beta1
 #   releaseTrackName: Android 17 QPR1
 #   releaseTrackVersionName: Beta 1
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-cp31.260403.005.a1-factory-8df9e865.zip
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp31.260403.005.a1-factory-53bee30d.zip
