@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
     inputs:
       test_mode:
-        description: "Test Mode (no commit)"
-        type: boolean
-        default: false
-        required: false
+        description: "Test Mode"
+        type: choice
+        options: [ No, test-branch, Artifact ]
+        default: No
       g_descrewup:
         description: "Manually include device (product:name)"
         type: string
@@ -257,16 +257,24 @@ jobs:
           cd "$GITHUB_WORKSPACE"
 
       - name: Commit new props
-        if: env.UPDATED_FILES > 0 && !inputs.test_mode
+        if: env.UPDATED_FILES > 0 && inputs.test_mode != 'Artifact'
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git commit -m "New build(s)"
-          git push
+          if [[ "${{inputs.test_mode}}" == "test-branch" ]]; then
+            git switch -C test main
+            git branch
+
+            git commit -m "New build(s) [Test]"
+            git push -f
+          else
+            git commit -m "New build(s)"
+            git push
+          fi
 
       - name: Upload a Build Artifact
-        if: inputs.test_mode
+        if: inputs.test_mode == 'Artifact'
         uses: actions/upload-artifact@v6.0.0
         with:
           compression-level: 9
