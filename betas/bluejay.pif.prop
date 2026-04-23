@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 6a
-FINGERPRINT=google/bluejay_beta/bluejay:CinnamonBun/CP31.260403.005.A1/15246833:user/release-keys
+FINGERPRINT=google/bluejay_beta/bluejay:16/CP11.251209.009/14837756:user/release-keys
 BRAND=google
 PRODUCT=bluejay_beta
 DEVICE=bluejay
-RELEASE=CinnamonBun
-ID=CP31.260403.005.A1
-INCREMENTAL=15246833
+RELEASE=16
+ID=CP11.251209.009
+INCREMENTAL=14837756
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-04-05
+SECURITY_PATCH=2025-12-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP31.260403.005.A1
-*.security_patch=2026-04-05
+*.build.id=CP11.251209.009
+*.security_patch=2025-12-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-04-23
-# Estimated Expiry: 2026-06-04
+# Released: 2026-02-10
+# Estimated Expiry: 2026-03-24
 
 # previewMetadata:
-#   id: cinnamonbun-qpr1-beta1
-#   releaseTrackName: Android 17 QPR1
-#   releaseTrackVersionName: Beta 1
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp31.260403.005.a1-factory-72b09724.zip
+#   id: baklava-qpr3-beta2.1
+#   releaseTrackName: Android 16 QPR3
+#   releaseTrackVersionName: Beta 2.1
+# Factory img: https://dl.google.com/developers/android/baklava/images/factory/bluejay_beta-cp11.251209.009-factory-74427982.zip
