@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 6
-FINGERPRINT=google/oriole_beta/oriole:17/CP21.260330.008/15199860:user/release-keys
+FINGERPRINT=google/oriole_beta/oriole:CinnamonBun/CP31.260403.005.A1/15246833:user/release-keys
 BRAND=google
 PRODUCT=oriole_beta
 DEVICE=oriole
-RELEASE=17
-ID=CP21.260330.008
-INCREMENTAL=15199860
+RELEASE=CinnamonBun
+ID=CP31.260403.005.A1
+INCREMENTAL=15246833
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-04-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP21.260330.008
+*.build.id=CP31.260403.005.A1
 *.security_patch=2026-04-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-04-16
-# Estimated Expiry: 2026-05-28
+# Released: 2026-04-24
+# Estimated Expiry: 2026-06-05
 
 # previewMetadata:
-#   id: cinnamonbun-beta4
-#   releaseTrackName: Android 17
-#   releaseTrackVersionName: Beta 4
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/oriole_beta-cp21.260330.008-factory-fc64f91e.zip
+#   id: cinnamonbun-qpr1-beta1
+#   releaseTrackName: Android 17 QPR1
+#   releaseTrackVersionName: Beta 1
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/oriole_beta-cp31.260403.005.a1-factory-ac07317c.zip
