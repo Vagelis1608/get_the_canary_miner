@@ -10,6 +10,7 @@ on:
         type: choice
         options: [ No, test-branch, Artifact ]
         default: No
+        required: false
       g_descrewup:
         description: "Manually include device (product:name)"
         type: string
@@ -28,7 +29,14 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+
+      - name: Test Branch
+        if: inputs.test_mode == 'test-branch'
+        run: |
+          git config --global push.autoSetupRemote true
+          git switch test || git switch -C test main
+          git branch
 
       - name: Install Latest executables
         run: |
@@ -129,7 +137,7 @@ jobs:
               type="CANARY"
             fi
 
-            if [[ -e "$propFile" && $( jq -r '.releaseCandidateName?' <<< "$resJson" ) == $( grep 'FINGERPRINT' "$propFile" | cut -d= -f2 | cut -d/ -f4 ) ]]; then continue; fi
+            if [[ -e "$propFile" && -n $( grep 'FINGERPRINT' "$propFile" | grep -i $( jq -r '.releaseCandidateName?' <<< "$resJson" ) ) ]]; then continue; fi
 
             zipUrl=$( jq -r '.factoryImageDownloadUrl' <<< "$resJson" )
             zipSize="$( curl -s --head $zipUrl | grep -i 'content-length' | cut -d' ' -f2 | tr -d '[[:space:]]' )"
@@ -263,9 +271,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
 
           if [[ "${{inputs.test_mode}}" == "test-branch" ]]; then
-            git switch -C test main
-            git branch
-
             git commit -m "New build(s) [Test]"
             git push -f
           else
