@@ -125,7 +125,7 @@ jobs:
 
             catalog="../catalog.json"
 
-            if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun-beta' ) ]]; then
+            if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun' ) ]]; then
               cd "$GITHUB_WORKSPACE/betas/cinnamonbun"
               type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
               catalog="../../catalog.json"
