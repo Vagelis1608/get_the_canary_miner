@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 8 Pro
-FINGERPRINT=google/husky_beta/husky:CANARY/ZP11.260320.007/15154667:user/release-keys
+FINGERPRINT=google/husky_beta/husky:CANARY/ZP11.260417.009/15372612:user/release-keys
 BRAND=google
 PRODUCT=husky_beta
 DEVICE=husky
 RELEASE=CANARY
-ID=ZP11.260320.007
-INCREMENTAL=15154667
+ID=ZP11.260417.009
+INCREMENTAL=15372612
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-04-05
+SECURITY_PATCH=2026-05-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.260320.007
-*.security_patch=2026-04-05
+*.build.id=ZP11.260417.009
+*.security_patch=2026-05-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-04-15
-# Estimated Expiry: 2026-05-27
+# Released: 2026-05-14
+# Estimated Expiry: 2026-06-25
 
 # previewMetadata:
-#   id: canary-202604
+#   id: canary-202605
 #   releaseTrackName: Android Canary
-#   releaseTrackVersionName: Canary 202604
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260320.007-factory-ba996877.zip
+#   releaseTrackVersionName: Canary 202605
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260417.009-factory-98739f5c.zip
