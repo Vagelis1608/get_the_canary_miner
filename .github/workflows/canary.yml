@@ -35,6 +35,7 @@ jobs:
         if: inputs.test_mode == 'test-branch'
         run: |
           git config --global push.autoSetupRemote true
+          git fetch origin
           git switch test || git switch -C test main
           git branch
 
@@ -125,7 +126,7 @@ jobs:
 
             catalog="../catalog.json"
 
-            if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun-beta' ) ]]; then
+            if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun' ) ]]; then
               cd "$GITHUB_WORKSPACE/betas/cinnamonbun"
               type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
               catalog="../../catalog.json"
