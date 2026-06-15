@@ -117,7 +117,7 @@ jobs:
             activeNames=()
             echo '{}' > fs.json
             for id in $( jq -r '.previewMetadata.id' <<< "$activeJson" ); do
-              jq --arg KEY "${id%%-*}" --arg VAL "$( jq -r --arg FIL $id '. | select( .previewMetadata.id == ($FIL) ) | .releaseCandidateName' )" \
+              jq --arg KEY "${id%%-*}" --arg VAL $( jq -r --arg FIL $id '. | select( .previewMetadata.id == ($FIL) ) | .releaseCandidateName' <<< "$activeJson" ) \
                   'if has(($KEY)) then ( .[($KEY)] += [($VAL)] ) else ( . + {($KEY):[($VAL)]} ) end' \
                   fs.json > temp.json
               if [[ $( wc -l < temp.json ) -gt 2 ]]; then mv -f temp.json fs.json; fi
