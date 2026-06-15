@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 9 Pro Fold
-FINGERPRINT=google/comet_beta/comet:17/CP21.260330.008/15199860:user/release-keys
+FINGERPRINT=google/comet_beta/comet:CinnamonBun/CP31.260522.006/15591510:user/release-keys
 BRAND=google
 PRODUCT=comet_beta
 DEVICE=comet
-RELEASE=17
-ID=CP21.260330.008
-INCREMENTAL=15199860
+RELEASE=CinnamonBun
+ID=CP31.260522.006
+INCREMENTAL=15591510
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-04-05
+SECURITY_PATCH=2026-05-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP21.260330.008
-*.security_patch=2026-04-05
+*.build.id=CP31.260522.006
+*.security_patch=2026-05-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-04-16
-# Estimated Expiry: 2026-05-28
+# Released: 2026-06-15
+# Estimated Expiry: 2026-07-27
 
 # previewMetadata:
-#   id: cinnamonbun-beta4
-#   releaseTrackName: Android 17
+#   id: cinnamonbun-qpr1-beta4
+#   releaseTrackName: Android 17 QPR1
 #   releaseTrackVersionName: Beta 4
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/comet_beta-cp21.260330.008-factory-b50a0939.zip
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/comet_beta-cp31.260522.006-factory-21c2f60b.zip
