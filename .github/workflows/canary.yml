@@ -113,10 +113,32 @@ jobs:
 
             let index++
 
-            # Error out if there are more than exactly one beta and one canary active
-            activeNames=( $( jq -r '.releaseCandidateName' <<< "$activeJson" ) )
-            canaryStatuses=$( jq -j '.previewMetadata.canary' <<< "$activeJson" )
-            # if [[ "${#activeNames[@]}" -ne 2 || ( "$canaryStatuses" != "truefalse" && "$canaryStatuses" != "falsetrue" ) ]]; then exit 21; fi
+            # Keep only one of each kind of active Beta/Canary
+            activeNames=()
+            echo '{}' > fs.json
+            for id in $( jq -r '.previewMetadata.id' <<< "$activeJson" ); do
+              jq --arg KEY "${id%%-*}" --arg VAL "$( jq -r --arg FIL $id '. | select( .previewMetadata.id == ($FIL) ) | .releaseCandidateName' )" \
+                  'if has(($KEY)) then ( .[($KEY)] += [($VAL)] ) else ( . + {($KEY):[($VAL)]} ) end' \
+                  fs.json > temp.json
+              if [[ $( wc -l < temp.json ) -gt 2 ]]; then mv -f temp.json fs.json; fi
+            done
+            for key in $( jq -r '. | keys | .[]' fs.json ); do
+              if [[ $( jq --arg KEY "$key" '.[($KEY)] | length' fs.json ) -eq 1 ]]; then
+                activeNames+=( $( jq -r --arg KEY "$key" '.[($KEY)].[]' fs.json ) )
+              else
+                latest=0
+                latestId=""
+                for id in $( jq -r --arg KEY "$key" '.[($KEY)].[]' fs.json ); do
+                  check=$( cut -d. -f2 <<< "$id" ) # Seems to be zip build date?
+                  if [[ $check -ge $latest ]]; then
+                    latest=$check
+                    latestId=$id
+                  fi
+                done
+
+                activeNames+=( $latestId )
+              fi
+            done
 
             for name in ${activeNames[@]}; do
             resJson=$( jq -c --arg NAME "$name" '. | select( .releaseCandidateName == $NAME )' <<< "$activeJson" )
