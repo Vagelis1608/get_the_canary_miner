@@ -1,6 +1,6 @@
 # Build Fields
 MANUFACTURER=Google
-MODEL=null
+MODEL=Pixel 10a
 FINGERPRINT=google/stallion_beta/stallion:CANARY/ZP11.260515.009/15513807:user/release-keys
 BRAND=google
 PRODUCT=stallion_beta

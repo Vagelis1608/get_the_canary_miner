@@ -224,7 +224,7 @@ jobs:
 
           modelName=""
           modelName="$( jq -r --arg PR ${product%_*} '.canaries.[$PR].name' $catalog )"
-          if [[ -z "$modelName" || "$modelName" == "null" ]]; then modelName="$( cat model.list | awk -v N=$index 'NR==N{ print }' )"; fi
+          if [[ -z "$modelName" || "$modelName" == *"null"* ]]; then modelName="$( cat model.list | awk -v N=$index 'NR==N{ print }' )"; fi
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
             MODEL=$modelName
@@ -262,11 +262,9 @@ jobs:
               jq 'reduce (.[] | select( .previewMetadata.canary? ) | {"releaseId":(.previewMetadata.id), "target":(.target), "buildName":(.releaseCandidateName), "buildId":(.buildId), "url":(.factoryImageDownloadUrl)}) as $obj ([]; . += [$obj])' dev.json > can.json
               jq 'reduce (.[] | select( .previewMetadata.canary? | not ) | {"releaseId":(.previewMetadata.id), "target":(.target), "buildName":(.releaseCandidateName), "buildId":(.buildId), "url":(.factoryImageDownloadUrl)}) as $obj ([]; . += [$obj])' dev.json > bet.json
                   
-              jq --arg DEV "${product%_*}" --arg T "$( date +%s )" --slurpfile LIST can.json \
-                      --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
+              jq --arg DEV "${product%_*}" --arg T "$( date +%s )" --slurpfile LIST can.json --arg NAME "$modelName" \
                       '.canaries += {($DEV):{"name":($NAME), "updated":($T),"releases":($LIST | .[])}}' "$catalog" > temp1.json
-              jq --arg DEV "${product%_*}" --arg T "$( date +%s )" --slurpfile LIST bet.json \
-                      --arg NAME "$( cat model.list | awk -v N=$index 'NR==N{ print }' )" \
+              jq --arg DEV "${product%_*}" --arg T "$( date +%s )" --slurpfile LIST bet.json --arg NAME "$modelName" \
                       '.betas += {($DEV):{"name":($NAME), "updated":($T),"releases":($LIST | .[])}}' temp1.json > temp2.json
               if [[ "$( wc -l < temp2.json )" -gt 42 ]]; then mv -f temp2.json "$catalog"; fi
               rm -f temp*.json dev.json can.json bet.json
