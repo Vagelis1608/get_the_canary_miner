@@ -291,11 +291,14 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
+          echo "New build(s)" > commit.txt
+          echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> commit.txt
+
           if [[ "${{inputs.test_mode}}" == "test-branch" ]]; then
-            git commit -m "New build(s) [Test]"
+            git commit -F commit.txt
             git push -f
           else
-            git commit -m "New build(s)"
+            git commit -F commit.txt
             git push
           fi
 
