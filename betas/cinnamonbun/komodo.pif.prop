@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 9 Pro XL
-FINGERPRINT=google/komodo_beta/komodo:17/CP31.260623.005/15817740:user/release-keys
+FINGERPRINT=google/komodo_beta/komodo:CinnamonBun/CP41.260701.005/15834971:user/release-keys
 BRAND=google
 PRODUCT=komodo_beta
 DEVICE=komodo
-RELEASE=17
-ID=CP31.260623.005
-INCREMENTAL=15817740
+RELEASE=CinnamonBun
+ID=CP41.260701.005
+INCREMENTAL=15834971
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-07-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP31.260623.005
+*.build.id=CP41.260701.005
 *.security_patch=2026-07-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-07-15
-# Estimated Expiry: 2026-08-26
+# Released: 2026-07-20
+# Estimated Expiry: 2026-08-31
 
 # previewMetadata:
-#   id: cinnamonbun-qpr1-beta7
-#   releaseTrackName: Android 17 QPR1
-#   releaseTrackVersionName: Beta 7
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/komodo_beta-cp31.260623.005-factory-bb541ac2.zip
+#   id: cinnamonbun-qpr2-beta1
+#   releaseTrackName: Android 17 QPR2
+#   releaseTrackVersionName: Beta 1
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/komodo_beta-cp41.260701.005-factory-cffb402e.zip
