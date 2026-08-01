@@ -30,6 +30,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: main
 
       - name: Test Branch
         if: inputs.test_mode == 'test-branch'
@@ -54,7 +56,6 @@ jobs:
         run: |
           mkdir "$GITHUB_WORKSPACE/devices" || true
           mkdir "$GITHUB_WORKSPACE/betas" || true
-          mkdir "$GITHUB_WORKSPACE/betas/cinnamonbun" || true
           cd "$GITHUB_WORKSPACE/devices"
 
           wget -q -O PIXEL_VERSIONS_HTML --no-check-certificate "https://developer.android.com/about/versions" 2>&1 || exit 1;
@@ -84,16 +85,14 @@ jobs:
           curl -s -o migrate.sh https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/refs/heads/main/module/migrate.sh
           sudo chmod +x migrate.sh
 
-          sudo cp -af migrate.sh ../betas/
-          sudo cp -af model.list ../betas/
-          sudo cp -af migrate.sh ../betas/cinnamonbun/
-          sudo cp -af model.list ../betas/cinnamonbun/
-
       - name: Main
         run: |
           set +e
 
           cd "$GITHUB_WORKSPACE/devices"
+
+          migrate="$GITHUB_WORKSPACE/devices/migrate.sh"
+          modellist="$GITHUB_WORKSPACE/devices/model.list"
 
           checkAPI="$( curl -s https://flash.android.com/ | grep -o '<body data-client-config=.*' | cut -d\; -f2 | cut -d\& -f1 )"
           if [[ "$checkAPI" != "$APIKEY" ]]; then
@@ -146,18 +145,16 @@ jobs:
             propFile="${product%_*}.pif.prop"
             echo "$propFile"
 
-            catalog="../catalog.json"
+            catalog="$GITHUB_WORKSPACE/catalog.json"
 
-            if [[ -n $( jq '.previewMetadata.id' <<< "$resJson" | grep -i 'cinnamonbun' ) ]]; then
-              cd "$GITHUB_WORKSPACE/betas/cinnamonbun"
-              type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
-              catalog="../../catalog.json"
-            elif [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "false" ]]; then 
-              cd "$GITHUB_WORKSPACE/betas"
-              type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
-            else
+            if [[ $( jq -r '.previewMetadata.canary?' <<< "$resJson" ) == "true" ]]; then
               cd "$GITHUB_WORKSPACE/devices"
               type="CANARY"
+            else
+              type=$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" | cut -d' ' -f2 )
+              folder=$( jq -r '.previewMetadata.id' <<< "$resJson" | cut -d- -f1 )
+              mkdir "$GITHUB_WORKSPACE/betas/$folder" 2> /dev/null || true
+              cd "$GITHUB_WORKSPACE/betas/$folder"
             fi
 
             if [[ -e "$propFile" && -n $( grep 'FINGERPRINT' "$propFile" | grep -i $( jq -r '.releaseCandidateName?' <<< "$resJson" ) ) ]]; then continue; fi
@@ -218,13 +215,13 @@ jobs:
 
             if [[ -z "$secDate" ]]; then # Fallback to current month
               secDate="$( date +%Y-%m-05 )"
-            fi 
+            fi
 
             rm -f min.prop
 
           modelName=""
           modelName="$( jq -r --arg PR ${product%_*} '.canaries.[$PR].name' $catalog )"
-          if [[ -z "$modelName" || "$modelName" == *"null"* ]]; then modelName="$( cat model.list | awk -v N=$index 'NR==N{ print }' )"; fi
+          if [[ -z "$modelName" || "$modelName" == *"null"* ]]; then modelName="$( cat $modellist | awk -v N=$index 'NR==N{ print }' )"; fi
           cat <<EOF | tee min.prop;
             MANUFACTURER=Google
             MODEL=$modelName
@@ -236,7 +233,7 @@ jobs:
           EOF
 
             rm -f "$propFile"
-            sh migrate.sh -f -a min.prop "$propFile"
+            sh "$migrate" -f -a min.prop "$propFile"
 
             sed -i 's/spoofProvider=.*/spoofProvider=0/' "$propFile"
 
