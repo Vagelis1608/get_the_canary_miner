@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 10 Pro
-FINGERPRINT=google/blazer_beta/blazer:CinnamonBun/CP41.260701.005/15834971:user/release-keys
+FINGERPRINT=google/blazer_beta/blazer:DEV/CP41.260717.006/15938186:user/release-keys
 BRAND=google
 PRODUCT=blazer_beta
 DEVICE=blazer
-RELEASE=CinnamonBun
-ID=CP41.260701.005
-INCREMENTAL=15834971
+RELEASE=DEV
+ID=CP41.260717.006
+INCREMENTAL=15938186
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-07-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP41.260701.005
+*.build.id=CP41.260717.006
 *.security_patch=2026-07-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-07-20
-# Estimated Expiry: 2026-08-31
+# Released: 2026-08-03
+# Estimated Expiry: 2026-09-14
 
 # previewMetadata:
-#   id: cinnamonbun-qpr2-beta1
+#   id: cinnamonbun-qpr2-beta2
 #   releaseTrackName: Android 17 QPR2
-#   releaseTrackVersionName: Beta 1
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260701.005-factory-89ec3480.zip
+#   releaseTrackVersionName: Beta 2
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260717.006-factory-96722f2c.zip
