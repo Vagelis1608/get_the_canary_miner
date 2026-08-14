@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 8
-FINGERPRINT=google/shiba_beta/shiba:DEV/CP41.260717.006/15938186:user/release-keys
+FINGERPRINT=google/shiba_beta/shiba:DEV/CP41.260731.005.B1/16056512:user/release-keys
 BRAND=google
 PRODUCT=shiba_beta
 DEVICE=shiba
 RELEASE=DEV
-ID=CP41.260717.006
-INCREMENTAL=15938186
+ID=CP41.260731.005.B1
+INCREMENTAL=16056512
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-07-05
+SECURITY_PATCH=2026-08-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP41.260717.006
-*.security_patch=2026-07-05
+*.build.id=CP41.260731.005.B1
+*.security_patch=2026-08-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-08-03
-# Estimated Expiry: 2026-09-14
+# Released: 2026-08-14
+# Estimated Expiry: 2026-09-25
 
 # previewMetadata:
-#   id: cinnamonbun-qpr2-beta2
+#   id: cinnamonbun-qpr2-beta3
 #   releaseTrackName: Android 17 QPR2
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/shiba_beta-cp41.260717.006-factory-f86e9259.zip
+#   releaseTrackVersionName: Beta 3
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/shiba_beta-cp41.260731.005.b1-factory-36fb6e7b.zip
