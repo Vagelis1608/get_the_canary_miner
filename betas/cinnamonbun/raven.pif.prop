@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 6 Pro
-FINGERPRINT=google/raven_beta/raven:17/CP31.260623.010/15961508:user/release-keys
+FINGERPRINT=google/raven_beta/raven:17/CP31.260623.012/16064790:user/release-keys
 BRAND=google
 PRODUCT=raven_beta
 DEVICE=raven
 RELEASE=17
-ID=CP31.260623.010
-INCREMENTAL=15961508
+ID=CP31.260623.012
+INCREMENTAL=16064790
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-07-05
+SECURITY_PATCH=2026-08-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP31.260623.010
-*.security_patch=2026-07-05
+*.build.id=CP31.260623.012
+*.security_patch=2026-08-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-07-31
-# Estimated Expiry: 2026-09-11
+# Released: 2026-08-17
+# Estimated Expiry: 2026-09-28
 
 # previewMetadata:
-#   id: cinnamonbun-qpr1-beta8
+#   id: cinnamonbun-qpr1-beta9
 #   releaseTrackName: Android 17 QPR1
-#   releaseTrackVersionName: Beta 8
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/raven_beta-cp31.260623.010-factory-7750baa4.zip
+#   releaseTrackVersionName: Beta 9
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/raven_beta-cp31.260623.012-factory-61b11097.zip

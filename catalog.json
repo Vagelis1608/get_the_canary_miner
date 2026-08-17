@@ -6581,7 +6581,7 @@
     },
     "oriole": {
       "name": "Pixel 6",
-      "updated": "1785529335",
+      "updated": "1786999782",
       "releases": [
         {
           "releaseId": "udc-dp1",
@@ -7197,6 +7197,15 @@
           "releaseDate": "2026-07-31",
           "securityDate": "2026-07-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/oriole_beta-cp31.260623.010-factory-14dd118c.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr1-beta9",
+          "target": "oriole_beta-user",
+          "buildName": "CP31.260623.012",
+          "buildId": "16064790",
+          "releaseDate": "2026-08-17",
+          "securityDate": "2026-08-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/oriole_beta-cp31.260623.012-factory-d3240665.zip"
         }
       ]
     },
@@ -7969,7 +7978,7 @@
     },
     "raven": {
       "name": "Pixel 6 Pro",
-      "updated": "1785529866",
+      "updated": "1786999783",
       "releases": [
         {
           "releaseId": "udc-dp1",
@@ -8578,6 +8587,15 @@
           "releaseDate": "2026-07-31",
           "securityDate": "2026-07-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/raven_beta-cp31.260623.010-factory-7750baa4.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr1-beta9",
+          "target": "raven_beta-user",
+          "buildName": "CP31.260623.012",
+          "buildId": "16064790",
+          "releaseDate": "2026-08-17",
+          "securityDate": "2026-08-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/raven_beta-cp31.260623.012-factory-61b11097.zip"
         }
       ]
     },
