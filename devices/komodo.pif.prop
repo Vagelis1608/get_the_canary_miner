@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 9 Pro XL
-FINGERPRINT=google/komodo_beta/komodo:CANARY/ZP11.260717.006/16004061:user/release-keys
+FINGERPRINT=google/komodo_beta/komodo:CANARY/ZP11.260821.010/16290768:user/release-keys
 BRAND=google
 PRODUCT=komodo_beta
 DEVICE=komodo
 RELEASE=CANARY
-ID=ZP11.260717.006
-INCREMENTAL=16004061
+ID=ZP11.260821.010
+INCREMENTAL=16290768
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-08-05
+SECURITY_PATCH=2026-09-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.260717.006
-*.security_patch=2026-08-05
+*.build.id=ZP11.260821.010
+*.security_patch=2026-09-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-08-07
-# Estimated Expiry: 2026-09-18
+# Released: 2026-09-16
+# Estimated Expiry: 2026-10-28
 
 # previewMetadata:
-#   id: canary-202608
+#   id: canary-202609
 #   releaseTrackName: Android Canary
-#   releaseTrackVersionName: Canary 202608
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.260717.006-factory-576d8c28.zip
+#   releaseTrackVersionName: Canary 202609
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.260821.010-factory-bc33fb1c.zip

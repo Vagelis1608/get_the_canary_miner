@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 10a
-FINGERPRINT=google/stallion_beta/stallion:17/CP41.260814.003.B1/16166531:user/release-keys
+FINGERPRINT=google/stallion_beta/stallion:17/CP41.260828.004.A8/16319058:user/release-keys
 BRAND=google
 PRODUCT=stallion_beta
 DEVICE=stallion
 RELEASE=17
-ID=CP41.260814.003.B1
-INCREMENTAL=16166531
+ID=CP41.260828.004.A8
+INCREMENTAL=16319058
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-08-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP41.260814.003.B1
+*.build.id=CP41.260828.004.A8
 *.security_patch=2026-08-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-08-29
-# Estimated Expiry: 2026-10-10
+# Released: 2026-09-17
+# Estimated Expiry: 2026-10-29
 
 # previewMetadata:
-#   id: cinnamonbun-qpr2-beta4
+#   id: cinnamonbun-qpr2-beta5
 #   releaseTrackName: Android 17 QPR2
-#   releaseTrackVersionName: Beta 4
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260814.003.b1-factory-ac15a357.zip
+#   releaseTrackVersionName: Beta 5
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260828.004.a8-factory-0c93b04f.zip

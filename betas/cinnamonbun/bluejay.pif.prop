@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 6a
-FINGERPRINT=google/bluejay_beta/bluejay:17/CP41.260814.003.A2/16182618:user/release-keys
+FINGERPRINT=google/bluejay_beta/bluejay:17/CP41.260828.005.A6/16319837:user/release-keys
 BRAND=google
 PRODUCT=bluejay_beta
 DEVICE=bluejay
 RELEASE=17
-ID=CP41.260814.003.A2
-INCREMENTAL=16182618
+ID=CP41.260828.005.A6
+INCREMENTAL=16319837
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-07-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP41.260814.003.A2
+*.build.id=CP41.260828.005.A6
 *.security_patch=2026-07-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-08-29
-# Estimated Expiry: 2026-10-10
+# Released: 2026-09-16
+# Estimated Expiry: 2026-10-28
 
 # previewMetadata:
-#   id: cinnamonbun-qpr2-beta4
+#   id: cinnamonbun-qpr2-beta5
 #   releaseTrackName: Android 17 QPR2
-#   releaseTrackVersionName: Beta 4
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260814.003.a2-factory-fb253ac7.zip
+#   releaseTrackVersionName: Beta 5
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260828.005.a6-factory-c5b7b91b.zip
