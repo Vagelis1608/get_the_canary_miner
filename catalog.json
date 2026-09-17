@@ -2179,7 +2179,7 @@
     },
     "tegu": {
       "name": "Pixel 9a",
-      "updated": "1786069836",
+      "updated": "1789605979",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -2292,6 +2292,15 @@
           "releaseDate": "2026-08-07",
           "securityDate": "2026-08-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.260717.006-factory-ad65308e.zip"
+        },
+        {
+          "releaseId": "canary-202609",
+          "target": "tegu_beta-user",
+          "buildName": "ZP11.260821.010",
+          "buildId": "16290768",
+          "releaseDate": "2026-09-17",
+          "securityDate": "2026-09-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.260821.010-factory-9b3ff94c.zip"
         }
       ]
     },
