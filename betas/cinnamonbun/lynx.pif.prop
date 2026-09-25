@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 7a
-FINGERPRINT=google/lynx_beta/lynx:17/CP41.260828.005.A6/16319837:user/release-keys
+FINGERPRINT=google/lynx_beta/lynx:17/CP41.260831.007/16416850:user/release-keys
 BRAND=google
 PRODUCT=lynx_beta
 DEVICE=lynx
 RELEASE=17
-ID=CP41.260828.005.A6
-INCREMENTAL=16319837
+ID=CP41.260831.007
+INCREMENTAL=16416850
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-07-05
+SECURITY_PATCH=2026-09-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP41.260828.005.A6
-*.security_patch=2026-07-05
+*.build.id=CP41.260831.007
+*.security_patch=2026-09-05
 *api_level=32
 
 # Advanced Settings
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-09-16
-# Estimated Expiry: 2026-10-28
+# Released: 2026-09-24
+# Estimated Expiry: 2026-11-05
 
 # previewMetadata:
-#   id: cinnamonbun-qpr2-beta5
+#   id: cinnamonbun-qpr2-beta6
 #   releaseTrackName: Android 17 QPR2
-#   releaseTrackVersionName: Beta 5
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260828.005.a6-factory-16909c00.zip
+#   releaseTrackVersionName: Beta 6
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260831.007-factory-7e1bbe42.zip
