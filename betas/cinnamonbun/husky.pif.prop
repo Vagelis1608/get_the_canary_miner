@@ -1,20 +1,20 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 8 Pro
-FINGERPRINT=google/husky_beta/husky:17/CP41.260831.007/16416850:user/release-keys
+FINGERPRINT=google/husky_beta/husky:17/CP41.260831.007.A3/16450490:user/release-keys
 BRAND=google
 PRODUCT=husky_beta
 DEVICE=husky
 RELEASE=17
-ID=CP41.260831.007
-INCREMENTAL=16416850
+ID=CP41.260831.007.A3
+INCREMENTAL=16450490
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-09-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=CP41.260831.007
+*.build.id=CP41.260831.007.A3
 *.security_patch=2026-09-05
 *api_level=32
 
@@ -27,11 +27,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-09-24
-# Estimated Expiry: 2026-11-05
+# Released: 2026-09-30
+# Estimated Expiry: 2026-11-11
 
 # previewMetadata:
-#   id: cinnamonbun-qpr2-beta6
+#   id: cinnamonbun-qpr2-beta6.1
 #   releaseTrackName: Android 17 QPR2
-#   releaseTrackVersionName: Beta 6
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-cp41.260831.007-factory-8c195008.zip
+#   releaseTrackVersionName: Beta 6.1
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-cp41.260831.007.a3-factory-75f18764.zip
