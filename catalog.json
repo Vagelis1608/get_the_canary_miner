@@ -2,7 +2,7 @@
   "canaries": {
     "akita": {
       "name": "Pixel 8a",
-      "updated": "1789595089",
+      "updated": "1791416173",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -124,12 +124,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.260821.010-factory-701ab12e.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "akita_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.260918.007-factory-30937b4b.zip"
         }
       ]
     },
     "blazer": {
       "name": "Pixel 10 Pro",
-      "updated": "1789601144",
+      "updated": "1791419550",
       "releases": [
         {
           "releaseId": "canary-202509",
@@ -230,12 +239,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/blazer_beta-zp11.260821.010-factory-d5505348.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "blazer_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/blazer_beta-zp11.260918.007-factory-f8da6c77.zip"
         }
       ]
     },
     "bluejay": {
       "name": "Pixel 6a",
-      "updated": "1789590007",
+      "updated": "1791412147",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -357,12 +375,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260821.010-factory-eb94eb78.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "bluejay_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260918.007-factory-a6494b9b.zip"
         }
       ]
     },
     "caiman": {
       "name": "Pixel 9 Pro",
-      "updated": "1789596878",
+      "updated": "1791416880",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -484,12 +511,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/caiman_beta-zp11.260821.010-factory-169ee4f1.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "caiman_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/caiman_beta-zp11.260918.007-factory-b96cfe1f.zip"
         }
       ]
     },
     "cheetah": {
       "name": "Pixel 7 Pro",
-      "updated": "1789590720",
+      "updated": "1791413197",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -611,12 +647,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/cheetah_beta-zp11.260821.010-factory-ba70cf22.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "cheetah_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/cheetah_beta-zp11.260918.007-factory-6dcae64c.zip"
         }
       ]
     },
     "comet": {
       "name": "Pixel 9 Pro Fold",
-      "updated": "1789598304",
+      "updated": "1791418021",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -738,12 +783,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/comet_beta-zp11.260821.010-factory-08a98446.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "comet_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/comet_beta-zp11.260918.007-factory-8586f319.zip"
         }
       ]
     },
     "felix": {
       "name": "Pixel Fold",
-      "updated": "1789591906",
+      "updated": "1791414337",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -865,12 +919,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/felix_beta-zp11.260821.010-factory-22b0b27a.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "felix_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/felix_beta-zp11.260918.007-factory-c20fa867.zip"
         }
       ]
     },
     "frankel": {
       "name": "Pixel 10",
-      "updated": "1789599525",
+      "updated": "1791418805",
       "releases": [
         {
           "releaseId": "canary-202509",
@@ -971,12 +1034,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/frankel_beta-zp11.260821.010-factory-16378b16.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "frankel_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/frankel_beta-zp11.260918.007-factory-de5cf752.zip"
         }
       ]
     },
     "husky": {
       "name": "Pixel 8 Pro",
-      "updated": "1789594300",
+      "updated": "1791415496",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -1098,12 +1170,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260821.010-factory-881872a3.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "husky_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260918.007-factory-00316935.zip"
         }
       ]
     },
     "komodo": {
       "name": "Pixel 9 Pro XL",
-      "updated": "1789597565",
+      "updated": "1791417580",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -1225,12 +1306,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.260821.010-factory-bc33fb1c.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "komodo_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.260918.007-factory-4ee71c79.zip"
         }
       ]
     },
     "lynx": {
       "name": "Pixel 7a",
-      "updated": "1789591129",
+      "updated": "1791413569",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -1352,12 +1442,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/lynx_beta-zp11.260821.010-factory-08fe1a7f.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "lynx_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/lynx_beta-zp11.260918.007-factory-12d95198.zip"
         }
       ]
     },
     "mustang": {
       "name": "Pixel 10 Pro XL",
-      "updated": "1789602745",
+      "updated": "1791420046",
       "releases": [
         {
           "releaseId": "canary-202509",
@@ -1458,6 +1557,15 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.260821.010-factory-24136f88.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "mustang_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.260918.007-factory-d94091f0.zip"
         }
       ]
     },
@@ -1581,7 +1689,7 @@
     },
     "panther": {
       "name": "Pixel 7",
-      "updated": "1789590431",
+      "updated": "1791412526",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -1703,12 +1811,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/panther_beta-zp11.260821.010-factory-c25957e2.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "panther_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/panther_beta-zp11.260918.007-factory-592e7f04.zip"
         }
       ]
     },
     "rango": {
       "name": "Pixel 10 Pro Fold",
-      "updated": "1789604572",
+      "updated": "1791420775",
       "releases": [
         {
           "releaseId": "canary-202510",
@@ -1802,6 +1919,15 @@
           "releaseDate": "2026-09-17",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260821.010-factory-d39d7fe4.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "rango_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260918.007-factory-747006d7.zip"
         }
       ]
     },
@@ -1925,7 +2051,7 @@
     },
     "shiba": {
       "name": "Pixel 8",
-      "updated": "1789593461",
+      "updated": "1791415072",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -2047,12 +2173,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/shiba_beta-zp11.260821.010-factory-f04daf9b.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "shiba_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/shiba_beta-zp11.260918.007-factory-4234c29f.zip"
         }
       ]
     },
     "tangorpro": {
       "name": "Pixel Tablet",
-      "updated": "1789592758",
+      "updated": "1791414757",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -2174,12 +2309,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.260821.010-factory-e66f5b54.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "tangorpro_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.260918.007-factory-fbfe0cb4.zip"
         }
       ]
     },
     "tegu": {
       "name": "Pixel 9a",
-      "updated": "1789605979",
+      "updated": "1791418367",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -2301,12 +2445,21 @@
           "releaseDate": "2026-09-17",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.260821.010-factory-9b3ff94c.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "tegu_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.260918.007-factory-f5955275.zip"
         }
       ]
     },
     "tokay": {
       "name": "Pixel 9",
-      "updated": "1789596037",
+      "updated": "1791416548",
       "releases": [
         {
           "releaseId": "canary-202506",
@@ -2428,12 +2581,21 @@
           "releaseDate": "2026-09-16",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/tokay_beta-zp11.260821.010-factory-c8db1112.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "tokay_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-07",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/tokay_beta-zp11.260918.007-factory-7a28177f.zip"
         }
       ]
     },
     "stallion": {
       "name": "Pixel 10a",
-      "updated": "1789605269",
+      "updated": "1791421125",
       "releases": [
         {
           "releaseId": "canary-202604",
@@ -2479,6 +2641,15 @@
           "releaseDate": "2026-09-17",
           "securityDate": "2026-09-05",
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.260821.010-factory-fd7949b8.zip"
+        },
+        {
+          "releaseId": "canary-202610",
+          "target": "stallion_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "releaseDate": "2026-10-08",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.260918.007-factory-8fa571db.zip"
         }
       ]
     }
