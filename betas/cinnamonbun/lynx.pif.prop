@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel 7a
-FINGERPRINT=google/lynx_beta/lynx:17/DP11.261002.005/16594701:user/release-keys
+FINGERPRINT=google/lynx_beta/lynx:17/DP11.261016.003/16708287:user/release-keys
 BRAND=google
 PRODUCT=lynx_beta
 DEVICE=lynx
 RELEASE=17
-ID=DP11.261002.005
-INCREMENTAL=16594701
+ID=DP11.261016.003
+INCREMENTAL=16708287
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-10-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-ro.build.fingerprint=google/lynx_beta/lynx:17/DP11.261002.005/16594701:user/release-keys
-ro.build.id=DP11.261002.005
+ro.build.fingerprint=google/lynx_beta/lynx:17/DP11.261016.003/16708287:user/release-keys
+ro.build.id=DP11.261016.003
 ro.product.device=lynx
 ro.product.name=lynx_beta
 ro.build.version.security_patch=2026-10-05
@@ -31,11 +31,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-10-20
-# Estimated Expiry: 2026-12-01
+# Released: 2026-10-30
+# Estimated Expiry: 2026-12-11
 
 # previewMetadata:
-#   id: cinnamonbun-qpr3-beta2
+#   id: cinnamonbun-qpr3-beta3
 #   releaseTrackName: Android 17 QPR3
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.261002.005-factory-ee34959e.zip
+#   releaseTrackVersionName: Beta 3
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.261016.003-factory-b0a8f9d8.zip

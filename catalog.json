@@ -2657,7 +2657,7 @@
   "betas": {
     "akita": {
       "name": "Pixel 8a",
-      "updated": "1792541153",
+      "updated": "1793322806",
       "releases": [
         {
           "releaseId": "vic-beta2",
@@ -3093,12 +3093,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-dp11.261002.005-factory-5b1156e4.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "akita_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-dp11.261016.003-factory-4f1846ea.zip"
         }
       ]
     },
     "blazer": {
       "name": "Pixel 10 Pro",
-      "updated": "1792546121",
+      "updated": "1793326082",
       "releases": [
         {
           "releaseId": "baklava-qpr2-beta2",
@@ -3303,12 +3312,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-dp11.261002.005-factory-9ac046a4.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "blazer_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-dp11.261016.003-factory-4c576f0e.zip"
         }
       ]
     },
     "bluejay": {
       "name": "Pixel 6a",
-      "updated": "1792536930",
+      "updated": "1793319060",
       "releases": [
         {
           "releaseId": "baklava-qpr1-beta3",
@@ -3534,12 +3552,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-dp11.261002.005-factory-0f666f71.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "bluejay_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-dp11.261016.003-factory-2c56b47a.zip"
         }
       ]
     },
     "caiman": {
       "name": "Pixel 9 Pro",
-      "updated": "1792542052",
+      "updated": "1793323905",
       "releases": [
         {
           "releaseId": "vic-qpr1-beta2",
@@ -3912,12 +3939,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/caiman_beta-dp11.261002.005-factory-5bdd2bd3.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "caiman_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/caiman_beta-dp11.261016.003-factory-20655b69.zip"
         }
       ]
     },
     "cheetah": {
       "name": "Pixel 7 Pro",
-      "updated": "1792537843",
+      "updated": "1793319967",
       "releases": [
         {
           "releaseId": "udc-dp1",
@@ -4584,12 +4620,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cheetah_beta-dp11.261002.005-factory-a0f1077c.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "cheetah_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cheetah_beta-dp11.261016.003-factory-939ae3f1.zip"
         }
       ]
     },
     "comet": {
       "name": "Pixel 9 Pro Fold",
-      "updated": "1792542627",
+      "updated": "1793324880",
       "releases": [
         {
           "releaseId": "vic-qpr1-beta2",
@@ -4962,12 +5007,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/comet_beta-dp11.261002.005-factory-bb28008e.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "comet_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/comet_beta-dp11.261016.003-factory-c98c5685.zip"
         }
       ]
     },
     "felix": {
       "name": "Pixel Fold",
-      "updated": "1792539029",
+      "updated": "1793321126",
       "releases": [
         {
           "releaseId": "udc-beta4",
@@ -5571,12 +5625,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-dp11.261002.005-factory-bb6a4627.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "felix_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-dp11.261016.003-factory-f0a177d4.zip"
         }
       ]
     },
     "frankel": {
       "name": "Pixel 10",
-      "updated": "1792544565",
+      "updated": "1793325656",
       "releases": [
         {
           "releaseId": "baklava-qpr2-beta2",
@@ -5781,12 +5844,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-dp11.261002.005-factory-609b7d68.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "frankel_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-dp11.261016.003-factory-0a460197.zip"
         }
       ]
     },
     "husky": {
       "name": "Pixel 8 Pro",
-      "updated": "1792540486",
+      "updated": "1793322302",
       "releases": [
         {
           "releaseId": "udc-qpr1-beta2",
@@ -6348,12 +6420,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.261002.005-factory-fd463781.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "husky_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.261016.003-factory-296a4cfb.zip"
         }
       ]
     },
     "komodo": {
       "name": "Pixel 9 Pro XL",
-      "updated": "1792542326",
+      "updated": "1793324526",
       "releases": [
         {
           "releaseId": "vic-beta4.2",
@@ -6733,12 +6814,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/komodo_beta-dp11.261002.005-factory-3edc9a58.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "komodo_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/komodo_beta-dp11.261016.003-factory-ff9ab757.zip"
         }
       ]
     },
     "lynx": {
       "name": "Pixel 7a",
-      "updated": "1792538441",
+      "updated": "1793320532",
       "releases": [
         {
           "releaseId": "udc-beta3",
@@ -7356,12 +7446,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.261002.005-factory-ee34959e.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "lynx_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.261016.003-factory-b0a8f9d8.zip"
         }
       ]
     },
     "mustang": {
       "name": "Pixel 10 Pro XL",
-      "updated": "1792547701",
+      "updated": "1793326263",
       "releases": [
         {
           "releaseId": "baklava-qpr2-beta2",
@@ -7566,6 +7665,15 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.261002.005-factory-7b3213ae.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "mustang_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.261016.003-factory-da0d5828.zip"
         }
       ]
     },
@@ -8201,7 +8309,7 @@
     },
     "panther": {
       "name": "Pixel 7",
-      "updated": "1792537228",
+      "updated": "1793319357",
       "releases": [
         {
           "releaseId": "udc-dp1",
@@ -8868,12 +8976,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/panther_beta-dp11.261002.005-factory-2558a50a.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "panther_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/panther_beta-dp11.261016.003-factory-2b6c2c31.zip"
         }
       ]
     },
     "rango": {
       "name": "Pixel 10 Pro Fold",
-      "updated": "1792547824",
+      "updated": "1793327281",
       "releases": [
         {
           "releaseId": "baklava-qpr2-beta3.1",
@@ -9071,6 +9188,15 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-dp11.261002.005-factory-3fc29b0c.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "rango_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-dp11.261016.003-factory-1441b322.zip"
         }
       ]
     },
@@ -9699,7 +9825,7 @@
     },
     "shiba": {
       "name": "Pixel 8",
-      "updated": "1792540165",
+      "updated": "1793321999",
       "releases": [
         {
           "releaseId": "udc-qpr1-beta2",
@@ -10254,12 +10380,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/shiba_beta-dp11.261002.005-factory-3c73c893.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "shiba_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/shiba_beta-dp11.261016.003-factory-0e196b5f.zip"
         }
       ]
     },
     "tangorpro": {
       "name": "Pixel Tablet",
-      "updated": "1792539833",
+      "updated": "1793321423",
       "releases": [
         {
           "releaseId": "udc-beta4",
@@ -10863,12 +10998,21 @@
           "releaseDate": "2026-10-20",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-dp11.261002.005-factory-2d70b3e5.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "tangorpro_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-dp11.261016.003-factory-2ae15424.zip"
         }
       ]
     },
     "tegu": {
       "name": "Pixel 9a",
-      "updated": "1792542936",
+      "updated": "1793325256",
       "releases": [
         {
           "releaseId": "baklava-beta4",
@@ -11136,12 +11280,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tegu_beta-dp11.261002.005-factory-dc2a13b2.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "tegu_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tegu_beta-dp11.261016.003-factory-50ec463b.zip"
         }
       ]
     },
     "tokay": {
       "name": "Pixel 9",
-      "updated": "1792541789",
+      "updated": "1793323365",
       "releases": [
         {
           "releaseId": "vic-beta4.2",
@@ -11528,12 +11681,21 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-dp11.261002.005-factory-c59e00f1.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "tokay_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-dp11.261016.003-factory-9a0fa96a.zip"
         }
       ]
     },
     "stallion": {
       "name": "Pixel 10a",
-      "updated": "1792548473",
+      "updated": "1793327919",
       "releases": [
         {
           "releaseId": "cinnamonbun-beta4",
@@ -11660,6 +11822,15 @@
           "releaseDate": "2026-10-21",
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.261002.005-factory-f7c98233.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "stallion_beta-user",
+          "buildName": "DP11.261016.003",
+          "buildId": "16708287",
+          "releaseDate": "2026-10-30",
+          "securityDate": "2026-10-05",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.261016.003-factory-51dccede.zip"
         }
       ]
     }

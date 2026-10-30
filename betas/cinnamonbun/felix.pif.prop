@@ -1,21 +1,21 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel Fold
-FINGERPRINT=google/felix_beta/felix:17/DP11.261002.005/16594701:user/release-keys
+FINGERPRINT=google/felix_beta/felix:17/DP11.261016.003/16708287:user/release-keys
 BRAND=google
 PRODUCT=felix_beta
 DEVICE=felix
 RELEASE=17
-ID=DP11.261002.005
-INCREMENTAL=16594701
+ID=DP11.261016.003
+INCREMENTAL=16708287
 TYPE=user
 TAGS=release-keys
 SECURITY_PATCH=2026-10-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-ro.build.fingerprint=google/felix_beta/felix:17/DP11.261002.005/16594701:user/release-keys
-ro.build.id=DP11.261002.005
+ro.build.fingerprint=google/felix_beta/felix:17/DP11.261016.003/16708287:user/release-keys
+ro.build.id=DP11.261016.003
 ro.product.device=felix
 ro.product.name=felix_beta
 ro.build.version.security_patch=2026-10-05
@@ -31,11 +31,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-10-20
-# Estimated Expiry: 2026-12-01
+# Released: 2026-10-30
+# Estimated Expiry: 2026-12-11
 
 # previewMetadata:
-#   id: cinnamonbun-qpr3-beta2
+#   id: cinnamonbun-qpr3-beta3
 #   releaseTrackName: Android 17 QPR3
-#   releaseTrackVersionName: Beta 2
-# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-dp11.261002.005-factory-bb6a4627.zip
+#   releaseTrackVersionName: Beta 3
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-dp11.261016.003-factory-f0a177d4.zip
