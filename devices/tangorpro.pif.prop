@@ -1,22 +1,26 @@
 # Build Fields
 MANUFACTURER=Google
 MODEL=Pixel Tablet
-FINGERPRINT=google/tangorpro_beta/tangorpro:CANARY/ZP11.260918.007/16484274:user/release-keys
+FINGERPRINT=google/tangorpro_beta/tangorpro:CANARY/ZP11.261016.008/16754936:user/release-keys
 BRAND=google
 PRODUCT=tangorpro_beta
 DEVICE=tangorpro
 RELEASE=CANARY
-ID=ZP11.260918.007
-INCREMENTAL=16484274
+ID=ZP11.261016.008
+INCREMENTAL=16754936
 TYPE=user
 TAGS=release-keys
-SECURITY_PATCH=2026-10-05
+SECURITY_PATCH=2026-11-05
 DEVICE_INITIAL_SDK_INT=32
 
 # System Properties
-*.build.id=ZP11.260918.007
-*.security_patch=2026-10-05
-*api_level=32
+ro.build.fingerprint=google/tangorpro_beta/tangorpro:CANARY/ZP11.261016.008/16754936:user/release-keys
+ro.build.id=ZP11.261016.008
+ro.product.device=tangorpro
+ro.product.name=tangorpro_beta
+ro.build.version.security_patch=2026-11-05
+ro.board.first_api_level=32
+ro.product.first_api_level=32
 
 # Advanced Settings
 spoofBuild=1
@@ -27,11 +31,11 @@ spoofVendingFinger=0
 spoofVendingSdk=0
 verboseLogs=0
 
-# Released: 2026-10-07
-# Estimated Expiry: 2026-11-18
+# Released: 2026-11-05
+# Estimated Expiry: 2026-12-17
 
 # previewMetadata:
-#   id: canary-202610
+#   id: canary-202611
 #   releaseTrackName: Android Canary
-#   releaseTrackVersionName: Canary 202610
-# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.260918.007-factory-fbfe0cb4.zip
+#   releaseTrackVersionName: Canary 202611
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.261016.008-factory-ca548b89.zip
