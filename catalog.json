@@ -2596,6 +2596,7 @@
     "stallion": {
       "name": "Pixel 10a",
       "updated": "1791421125",
+      "initSDK": "35",
       "releases": [
         {
           "releaseId": "canary-202604",
@@ -11696,6 +11697,7 @@
     "stallion": {
       "name": "Pixel 10a",
       "updated": "1793327919",
+      "initSDK": "35",
       "releases": [
         {
           "releaseId": "cinnamonbun-beta4",
