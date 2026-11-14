@@ -30,8 +30,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: main
 
       - name: Test Branch
         if: inputs.test_mode == 'test-branch'
@@ -159,6 +157,12 @@ jobs:
 
             if [[ -e "$propFile" && -n $( grep 'FINGERPRINT' "$propFile" | grep -i $( jq -r '.releaseCandidateName?' <<< "$resJson" ) ) ]]; then continue; fi
 
+            if [[ "$type" == "CANARY" ]]; then typeJ="canaries"
+            else typeJ="betas"; fi
+
+            initSDK="$( jq -r --arg T $typeJ --arg D ${product%_*} '.[($T)].[($D)].initSDK?' $catalog )"
+            setSDK=""
+
             zipUrl=$( jq -r '.factoryImageDownloadUrl' <<< "$resJson" )
             zipSize="$( curl -s --head $zipUrl | grep -i 'content-length' | cut -d' ' -f2 | tr -d '[[:space:]]' )"
             echo "$zipUrl"' - '"$zipSize"
@@ -166,6 +170,8 @@ jobs:
             fingerprint=""
             i=0
             startCh=0
+
+            if [[ "$initSDK" != "null" ]]; then
             while [[ ( -z "$secDate" || -z "$fingerprint" ) && (( $( bc <<< "$startCh < $zipSize" ) )) ]]; do
               startCh=$(( $i * $chunkSize ))
               endCh=$(( ( $i + 1 ) * $chunkSize + 256 ))
@@ -191,16 +197,30 @@ jobs:
           
               let i++
             done
+            else
+              wget -q --no-check-certificate -O full.zip --header 'Accept-Encoding: identity' "$zipUrl"
+            fi
 
             # Try scanning the entire file, just in case
             if [[ -z "$fingerprint" ]]; then fingerprint="$( grep -ia 'com.android.build.boot.fingerprint' full.zip | strings | grep 'google.*keys$' )"; fi
             if [[ -z "$secDate" ]]; then secDate="$( grep -ia 'com.android.build.boot.security_patch' full.zip | strings | grep '^2' )"; fi # TODO: Update this in the year 3000
 
             # zip is probably deflated. Attempt inflation
-            if [[ -z "$secDate" || -z "$fingerprint" ]]; then
+            if [[ -z "$secDate" || -z "$fingerprint" || "$initSDK" == "null" ]]; then
               unzip -j full.zip "*.zip"
               rm -f full.zip
               unzip -j image*.zip boot.img
+
+              if [[ "$initSDK" == "null" ]]; then
+                unzip -j image*.zip vendor.img
+                setSDK="$( grep -ia 'ro.product.first_api_level=' vendor.img | cut -d= -f2 )"
+                
+                if [[ -z "$setSDK" ]]; then echo "Failed to get ro.product.first_api_level!"; exit 77; fi
+
+                initSDK="$setSDK"
+                rm -f vendor.img
+              fi
+
               rm -f image*.zip
 
               if [[ -z "$fingerprint" ]]; then fingerprint="$( grep -ia 'com.android.build.boot.fingerprint' boot.img | strings | grep 'google.*keys$' )"; fi
@@ -229,7 +249,7 @@ jobs:
             PRODUCT=$product
             DEVICE=${product%_*}
             SECURITY_PATCH=$secDate
-            DEVICE_INITIAL_SDK_INT=32
+            DEVICE_INITIAL_SDK_INT=$initSDK
           EOF
 
             rm -f "$propFile"
@@ -246,9 +266,6 @@ jobs:
             echo '#   releaseTrackName: '$( jq -r '.previewMetadata.releaseTrackName' <<< "$resJson" ) >> "$propFile"
             echo '#   releaseTrackVersionName: '$( jq -r '.previewMetadata.releaseTrackVersionName' <<< "$resJson" ) >> "$propFile"
             echo "# Factory img: $zipUrl" >> "$propFile"
-
-            if [[ "$type" == "CANARY" ]]; then typeJ="canaries"
-            else typeJ="betas"; fi
 
             if [[ $( jq -c --arg D "${product%_*}" '.canaries.[($D)]' ) == "null" ]]; then
               # Pull any existing history of new device(s)
@@ -270,6 +287,13 @@ jobs:
                       --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
                       '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
                       "$catalog" > temp.json
+              if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
+            fi
+
+            if [[ -n "$setSDK" ]]; then
+              jq -r --arg T $typeJ --arg D ${product%_*} --arg V "$setSDK" \
+                  '(.[($T)].[($D)] | {"name":.name, "updated":.updated, "initSDK":($V), "releases":.releases}) as $new | .[($T)].[($D)] = ($new)' \
+                  $catalog > temp.json
               if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
             fi
 
