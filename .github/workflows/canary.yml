@@ -12,7 +12,7 @@ on:
         default: No
         required: false
       g_descrewup:
-        description: "Manually include device (product:name)"
+        description: "Manually include device(s) (product:name)"
         type: string
         required: false
 
@@ -64,8 +64,16 @@ jobs:
 
           # Manual device injection
           if [[ -n "$MANUAL" ]]; then
-            PRODUCT_LIST+=" ${MANUAL%%\:*}_beta"
-            cut -d: -f2 <<< "${MANUAL}" >> model.list
+            i=1
+            dev="$( echo ${MANUAL}, | cut -d, -f1 )"
+
+            while [[ -n "$dev" ]]; do
+              PRODUCT_LIST+=" ${dev%%\:*}_beta"
+              cut -d: -f2 <<< "${dev}" >> model.list
+            
+              let i++
+              dev="$( echo ${MANUAL}, | cut -d, -f$i )"
+            done
           fi
           
           # Check catalog for devices missing from the page
