@@ -275,10 +275,10 @@ jobs:
             echo '#   releaseTrackVersionName: '$( jq -r '.previewMetadata.releaseTrackVersionName' <<< "$resJson" ) >> "$propFile"
             echo "# Factory img: $zipUrl" >> "$propFile"
 
-            if [[ $( jq -c --arg D "${product%_*}" '.canaries.[($D)]' ) == "null" ]]; then
+            if [[ $( jq -c --arg D "${product%_*}" '.canaries.[($D)]?' "$catalog" ) == "null" ]]; then
               # Pull any existing history of new device(s)
               curl -s --header 'Referer: https://flash.android.com' \
-                      "https://content-flashstation-pa.googleapis.com/v1/builds?product=${device}_beta&key=$APIKEY" | \
+                      "https://content-flashstation-pa.googleapis.com/v1/builds?product=${product}&key=$APIKEY" | \
                       jq -c '.flashstationBuild | .[].licenseText = [ "sure" ]' > dev.json
                       
               jq 'reduce (.[] | select( .previewMetadata.canary? ) | {"releaseId":(.previewMetadata.id), "target":(.target), "buildName":(.releaseCandidateName), "buildId":(.buildId), "url":(.factoryImageDownloadUrl)}) as $obj ([]; . += [$obj])' dev.json > can.json
@@ -290,13 +290,13 @@ jobs:
                       '.betas += {($DEV):{"name":($NAME), "updated":($T),"releases":($LIST | .[])}}' temp1.json > temp2.json
               if [[ "$( wc -l < temp2.json )" -gt 42 ]]; then mv -f temp2.json "$catalog"; fi
               rm -f temp*.json dev.json can.json bet.json
-            else
-              jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
-                      --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
-                      '.[($TYPE)].[($DEV)].updated = ($T) | .[($TYPE)].[($DEV)].releases += [{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]' \
-                      "$catalog" > temp.json
-              if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
             fi
+
+            jq --arg TYPE "$typeJ" --arg DEV "${product%_*}" --arg SEC "$secDate" --arg T "$( date +%s )" \
+                    --arg REL "$( date '+%Y-%m-%d' )" --argjson RES "$resJson" \
+                    '.[($TYPE)].[($DEV)].updated = ($T) | ([{"releaseId":($RES | .previewMetadata.id), "target":($RES | .target), "buildName":($RES | .releaseCandidateName), "buildId":($RES | .buildId), "releaseDate":($REL), "securityDate":($SEC), "url":($RES | .factoryImageDownloadUrl)}]) as $new | if (.[($TYPE)].[($DEV)].releases.[-1].buildId == ($RES | .buildId)) then ( .[($TYPE)].[($DEV)].releases.[-1] = $new ) else ( .[($TYPE)].[($DEV)].releases += $new ) end' \
+                    "$catalog" > temp.json
+            if [[ "$( wc -l < temp.json )" -gt 42 ]]; then mv -f temp.json "$catalog"; fi
 
             if [[ -n "$setSDK" ]]; then
               jq -r --arg T $typeJ --arg D ${product%_*} --arg V "$setSDK" \
