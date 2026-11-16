@@ -2842,6 +2842,106 @@
           "url": "https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.261016.008-factory-ac3f7bd9.zip"
         }
       ]
+    },
+    "cubs": {
+      "name": "Pixel 11",
+      "updated": "1794870741",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "canary-202610",
+          "target": "cubs_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.260918.007-factory-60e44827.zip"
+        },
+        [
+          {
+            "releaseId": "canary-202611",
+            "target": "cubs_beta-user",
+            "buildName": "ZP11.261016.008",
+            "buildId": "16754936",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-11-05",
+            "url": "https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.261016.008-factory-901257f0.zip"
+          }
+        ]
+      ]
+    },
+    "grizzly": {
+      "name": "Pixel 11 Pro",
+      "updated": "1794871488",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "canary-202610",
+          "target": "grizzly_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/grizzly_beta-zp11.260918.007-factory-d4f217d1.zip"
+        },
+        [
+          {
+            "releaseId": "canary-202611",
+            "target": "grizzly_beta-user",
+            "buildName": "ZP11.261016.008",
+            "buildId": "16754936",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-11-05",
+            "url": "https://dl.google.com/developers/android/CANARY/images/factory/grizzly_beta-zp11.261016.008-factory-9c4cf500.zip"
+          }
+        ]
+      ]
+    },
+    "kodiak": {
+      "name": "Pixel 11 Pro XL",
+      "updated": "1794871899",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "canary-202610",
+          "target": "kodiak_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.260918.007-factory-82704ed7.zip"
+        },
+        [
+          {
+            "releaseId": "canary-202611",
+            "target": "kodiak_beta-user",
+            "buildName": "ZP11.261016.008",
+            "buildId": "16754936",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-11-05",
+            "url": "https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.261016.008-factory-21dd31fa.zip"
+          }
+        ]
+      ]
+    },
+    "yogi": {
+      "name": "Pixel 11 Pro Fold",
+      "updated": "1794872348",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "canary-202610",
+          "target": "yogi_beta-user",
+          "buildName": "ZP11.260918.007",
+          "buildId": "16484274",
+          "url": "https://dl.google.com/developers/android/CANARY/images/factory/yogi_beta-zp11.260918.007-factory-78f05700.zip"
+        },
+        [
+          {
+            "releaseId": "canary-202611",
+            "target": "yogi_beta-user",
+            "buildName": "ZP11.261016.008",
+            "buildId": "16754936",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-11-05",
+            "url": "https://dl.google.com/developers/android/CANARY/images/factory/yogi_beta-zp11.261016.008-factory-8b97b206.zip"
+          }
+        ]
+      ]
     }
   },
   "betas": {
@@ -12212,6 +12312,302 @@
           "securityDate": "2026-10-05",
           "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.261030.003-factory-9f35b828.zip"
         }
+      ]
+    },
+    "cubs": {
+      "name": "Pixel 11",
+      "updated": "1794871100",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "cinnamonbun-qpr2-beta4",
+          "target": "cubs_beta-user",
+          "buildName": "CP41.260814.003.C2",
+          "buildId": "16189032",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260814.003.c2-factory-36bc5e6a.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta5",
+          "target": "cubs_beta-user",
+          "buildName": "CP41.260828.004.A8",
+          "buildId": "16319058",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260828.004.a8-factory-f171126e.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta6.1",
+          "target": "cubs_beta-user",
+          "buildName": "CP41.260831.011",
+          "buildId": "16448103",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.011-factory-a24f6b76.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7",
+          "target": "cubs_beta-user",
+          "buildName": "CP41.260831.016",
+          "buildId": "16521119",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.016-factory-11122495.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta1",
+          "target": "cubs_beta-user",
+          "buildName": "DP11.260918.005",
+          "buildId": "16443917",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.260918.005-factory-e368a0a0.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta2",
+          "target": "cubs_beta-user",
+          "buildName": "DP11.261002.005",
+          "buildId": "16594701",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261002.005-factory-36850da9.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "cubs_beta-user",
+          "buildName": "DP11.261016.004",
+          "buildId": "16730940",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261016.004-factory-5dcc3423.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7.1",
+          "target": "cubs_beta-user",
+          "buildName": "CP41.260831.019",
+          "buildId": "16596456",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.019-factory-4f3a2e5b.zip"
+        },
+        [
+          {
+            "releaseId": "cinnamonbun-qpr3-beta4",
+            "target": "cubs_beta-user",
+            "buildName": "DP11.261030.003",
+            "buildId": "16847878",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-10-05",
+            "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261030.003-factory-61e4c3cd.zip"
+          }
+        ]
+      ]
+    },
+    "grizzly": {
+      "name": "Pixel 11 Pro",
+      "updated": "1794871769",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "cinnamonbun-qpr2-beta4",
+          "target": "grizzly_beta-user",
+          "buildName": "CP41.260814.003.C2",
+          "buildId": "16189032",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260814.003.c2-factory-6b68d2d6.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta5",
+          "target": "grizzly_beta-user",
+          "buildName": "CP41.260828.004.A8",
+          "buildId": "16319058",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260828.004.a8-factory-11a6dc7b.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta6.1",
+          "target": "grizzly_beta-user",
+          "buildName": "CP41.260831.011",
+          "buildId": "16448103",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.011-factory-6dee5512.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7",
+          "target": "grizzly_beta-user",
+          "buildName": "CP41.260831.016",
+          "buildId": "16521119",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.016-factory-cad23c5e.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta1",
+          "target": "grizzly_beta-user",
+          "buildName": "DP11.260918.005",
+          "buildId": "16443917",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-dp11.260918.005-factory-09c56567.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta2",
+          "target": "grizzly_beta-user",
+          "buildName": "DP11.261002.005",
+          "buildId": "16594701",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-dp11.261002.005-factory-2c96dd03.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "grizzly_beta-user",
+          "buildName": "DP11.261016.004",
+          "buildId": "16730940",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-dp11.261016.004-factory-860529ea.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7.1",
+          "target": "grizzly_beta-user",
+          "buildName": "CP41.260831.019",
+          "buildId": "16596456",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.019-factory-1fc920fc.zip"
+        },
+        [
+          {
+            "releaseId": "cinnamonbun-qpr3-beta4",
+            "target": "grizzly_beta-user",
+            "buildName": "DP11.261030.003",
+            "buildId": "16847878",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-10-05",
+            "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-dp11.261030.003-factory-ebf05176.zip"
+          }
+        ]
+      ]
+    },
+    "kodiak": {
+      "name": "Pixel 11 Pro XL",
+      "updated": "1794872158",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "cinnamonbun-qpr2-beta4",
+          "target": "kodiak_beta-user",
+          "buildName": "CP41.260814.003.C2",
+          "buildId": "16189032",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260814.003.c2-factory-f05888cd.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta5",
+          "target": "kodiak_beta-user",
+          "buildName": "CP41.260828.004.A8",
+          "buildId": "16319058",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260828.004.a8-factory-6a7a9c0c.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta6.1",
+          "target": "kodiak_beta-user",
+          "buildName": "CP41.260831.011",
+          "buildId": "16448103",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.011-factory-01a216fb.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7",
+          "target": "kodiak_beta-user",
+          "buildName": "CP41.260831.016",
+          "buildId": "16521119",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.016-factory-b503ab0c.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta1",
+          "target": "kodiak_beta-user",
+          "buildName": "DP11.260918.005",
+          "buildId": "16443917",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.260918.005-factory-0566cedb.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta2",
+          "target": "kodiak_beta-user",
+          "buildName": "DP11.261002.005",
+          "buildId": "16594701",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261002.005-factory-d1635421.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "kodiak_beta-user",
+          "buildName": "DP11.261016.004",
+          "buildId": "16730940",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261016.004-factory-bb824a7c.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7.1",
+          "target": "kodiak_beta-user",
+          "buildName": "CP41.260831.019",
+          "buildId": "16596456",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.019-factory-c4786468.zip"
+        },
+        [
+          {
+            "releaseId": "cinnamonbun-qpr3-beta4",
+            "target": "kodiak_beta-user",
+            "buildName": "DP11.261030.003",
+            "buildId": "16847878",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-10-05",
+            "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261030.003-factory-2cc3cf49.zip"
+          }
+        ]
+      ]
+    },
+    "yogi": {
+      "name": "Pixel 11 Pro Fold",
+      "updated": "1794872564",
+      "initSDK": "37",
+      "releases": [
+        {
+          "releaseId": "cinnamonbun-qpr2-beta4",
+          "target": "yogi_beta-user",
+          "buildName": "CP41.260814.003.C2",
+          "buildId": "16189032",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260814.003.c2-factory-aa164c9a.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta5",
+          "target": "yogi_beta-user",
+          "buildName": "CP41.260828.004.A8",
+          "buildId": "16319058",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260828.004.a8-factory-88c41816.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta6.1",
+          "target": "yogi_beta-user",
+          "buildName": "CP41.260831.011",
+          "buildId": "16448103",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.011-factory-ea06dfeb.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7",
+          "target": "yogi_beta-user",
+          "buildName": "CP41.260831.016",
+          "buildId": "16521119",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.016-factory-facc761d.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta1",
+          "target": "yogi_beta-user",
+          "buildName": "DP11.260918.005",
+          "buildId": "16443917",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.260918.005-factory-b993686b.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta2",
+          "target": "yogi_beta-user",
+          "buildName": "DP11.261002.005",
+          "buildId": "16594701",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261002.005-factory-12cc585b.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr3-beta3",
+          "target": "yogi_beta-user",
+          "buildName": "DP11.261016.004",
+          "buildId": "16730940",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261016.004-factory-b27f832a.zip"
+        },
+        {
+          "releaseId": "cinnamonbun-qpr2-beta7.1",
+          "target": "yogi_beta-user",
+          "buildName": "CP41.260831.019",
+          "buildId": "16596456",
+          "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.019-factory-d1d1450f.zip"
+        },
+        [
+          {
+            "releaseId": "cinnamonbun-qpr3-beta4",
+            "target": "yogi_beta-user",
+            "buildName": "DP11.261030.003",
+            "buildId": "16847878",
+            "releaseDate": "2026-11-16",
+            "securityDate": "2026-10-05",
+            "url": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261030.003-factory-72fd6286.zip"
+          }
+        ]
       ]
     }
   }

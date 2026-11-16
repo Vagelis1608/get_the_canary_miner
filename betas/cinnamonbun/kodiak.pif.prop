@@ -1,0 +1,41 @@
+# Build Fields
+MANUFACTURER=Google
+MODEL=Pixel 11 Pro XL
+FINGERPRINT=google/kodiak_beta/kodiak:17/DP11.261030.003/16847878:user/release-keys
+BRAND=google
+PRODUCT=kodiak_beta
+DEVICE=kodiak
+RELEASE=17
+ID=DP11.261030.003
+INCREMENTAL=16847878
+TYPE=user
+TAGS=release-keys
+SECURITY_PATCH=2026-10-05
+DEVICE_INITIAL_SDK_INT=37
+
+# System Properties
+ro.build.fingerprint=google/kodiak_beta/kodiak:17/DP11.261030.003/16847878:user/release-keys
+ro.build.id=DP11.261030.003
+ro.product.device=kodiak
+ro.product.name=kodiak_beta
+ro.build.version.security_patch=2026-10-05
+ro.board.first_api_level=32
+ro.product.first_api_level=37
+
+# Advanced Settings
+spoofBuild=1
+spoofProps=1
+spoofProvider=0
+spoofSignature=0
+spoofVendingFinger=0
+spoofVendingSdk=0
+verboseLogs=0
+
+# Released: 2026-11-16
+# Estimated Expiry: 2026-12-28
+
+# previewMetadata:
+#   id: cinnamonbun-qpr3-beta4
+#   releaseTrackName: Android 17 QPR3
+#   releaseTrackVersionName: Beta 4
+# Factory img: https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261030.003-factory-2cc3cf49.zip

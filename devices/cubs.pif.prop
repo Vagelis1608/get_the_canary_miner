@@ -1,0 +1,41 @@
+# Build Fields
+MANUFACTURER=Google
+MODEL=Pixel 11
+FINGERPRINT=google/cubs_beta/cubs:CANARY/ZP11.261016.008/16754936:user/release-keys
+BRAND=google
+PRODUCT=cubs_beta
+DEVICE=cubs
+RELEASE=CANARY
+ID=ZP11.261016.008
+INCREMENTAL=16754936
+TYPE=user
+TAGS=release-keys
+SECURITY_PATCH=2026-11-05
+DEVICE_INITIAL_SDK_INT=37
+
+# System Properties
+ro.build.fingerprint=google/cubs_beta/cubs:CANARY/ZP11.261016.008/16754936:user/release-keys
+ro.build.id=ZP11.261016.008
+ro.product.device=cubs
+ro.product.name=cubs_beta
+ro.build.version.security_patch=2026-11-05
+ro.board.first_api_level=32
+ro.product.first_api_level=37
+
+# Advanced Settings
+spoofBuild=1
+spoofProps=1
+spoofProvider=0
+spoofSignature=0
+spoofVendingFinger=0
+spoofVendingSdk=0
+verboseLogs=0
+
+# Released: 2026-11-16
+# Estimated Expiry: 2026-12-28
+
+# previewMetadata:
+#   id: canary-202611
+#   releaseTrackName: Android Canary
+#   releaseTrackVersionName: Canary 202611
+# Factory img: https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.261016.008-factory-901257f0.zip
